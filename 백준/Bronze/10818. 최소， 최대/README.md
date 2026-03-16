@@ -26,3 +26,21 @@
 
  <p>첫째 줄에 주어진 정수 N개의 최솟값과 최댓값을 공백으로 구분해 출력한다.</p>
 
+### 핵심 차이
+코드	자료형	특징
+map(int, ...)	map(iterator)	값 저장 안함
+list(map(...))	list	값 저장
+
+인덱스 접근
+map
+
+불가능
+
+num = map(int,input().split())
+num[0]   # 오류
+list
+
+가능
+
+num = list(map(int,input().split()))
+num[0]   # 가능
