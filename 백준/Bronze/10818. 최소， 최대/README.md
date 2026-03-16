@@ -26,7 +26,138 @@
 
  <p>첫째 줄에 주어진 정수 N개의 최솟값과 최댓값을 공백으로 구분해 출력한다.</p>
 
-### 핵심 차이
+### 핵심 차이# Python `map()` vs `list(map())`
+
+### 1. 핵심 차이
+
+| 코드 | 자료형 | 특징 |
+|-----|-----|-----|
+| `map(int, ...)` | `map` (iterator) | 값을 저장하지 않고 필요할 때 생성 |
+| `list(map(int, ...))` | `list` | 모든 값을 리스트에 저장 |
+
+---
+
+### 2. 인덱스 접근
+
+#### map
+
+불가능
+
+```python
+num = map(int, input().split())
+num[0]  # 오류 발생
+```
+
+이유
+
+- `map` 객체는 **iterator**
+- 인덱스 접근을 지원하지 않음
+
+---
+
+#### list
+
+가능
+
+```python
+num = list(map(int, input().split()))
+num[0]  # 정상 작동
+```
+
+이유
+
+- `list`는 **인덱스 기반 자료구조**
+
+---
+
+### 3. 입력 처리 과정
+
+```python
+input().split()
+```
+
+결과
+
+```python
+['1', '2', '3']
+```
+
+자료형
+
+```
+list[str]
+```
+
+---
+
+#### map 적용
+
+```python
+map(int, input().split())
+```
+
+동작
+
+```
+int('1')
+int('2')
+int('3')
+```
+
+자료형
+
+```
+map (iterator)
+```
+
+---
+
+#### 리스트 생성
+
+```python
+list(map(int, input().split()))
+```
+
+결과
+
+```python
+[1, 2, 3]
+```
+
+자료형
+
+```
+list[int]
+```
+
+---
+
+### 4. 알고리즘 문제에서 주로 사용하는 방식
+
+```python
+nums = list(map(int, input().split()))
+```
+
+이유
+
+1. 인덱스 접근 가능
+2. 여러 번 사용 가능
+3. 길이 확인 가능 (`len(nums)`)
+
+---
+
+### 5. 요약
+
+```
+input().split()
+→ 문자열 리스트 생성
+
+map(int, iterable)
+→ 각 요소에 int 적용하는 iterator 생성
+
+list(map(int, iterable))
+→ iterator 결과를 리스트로 저장
+```
 코드	자료형	특징
 map(int, ...)	map(iterator)	값 저장 안함
 list(map(...))	list	값 저장
