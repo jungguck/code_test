@@ -1,4 +1,4 @@
-# [Bronze II] 소수 찾기 - 1978 
+# [Bronze II] 소수 찾기 - 1978 (복습필요함)
 
 [문제 링크](https://www.acmicpc.net/problem/1978) 
 
