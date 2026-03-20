@@ -1,4 +1,4 @@
-# [Bronze IV] 왜 맘대로 예약하냐고 - 32941 
+# [Bronze IV] 왜 맘대로 예약하냐고 - 32941 (재미는 문제.. 몇교시?문제)
 
 [문제 링크](https://www.acmicpc.net/problem/32941) 
 
