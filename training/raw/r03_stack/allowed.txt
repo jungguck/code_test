@@ -1,0 +1,5 @@
+# 직접 만든 Stack 의 메서드는 허용 (리스트의 append/pop 만 금지)
+def pop(
+def push(
+stack.pop(
+stack.push(

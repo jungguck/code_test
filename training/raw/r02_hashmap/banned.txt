@@ -1,0 +1,10 @@
+# dict / set / Counter 전부 금지
+dict(
+set(
+Counter
+{
+defaultdict
+.count(
+.sort(
+sorted(
+index(

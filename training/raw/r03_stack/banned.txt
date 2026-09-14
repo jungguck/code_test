@@ -1,0 +1,7 @@
+# 리스트를 스택처럼 쓰는 것 금지 -- 배열로 직접 만들어라
+.append(
+.pop(
+.insert(
+.remove(
+deque
+{
