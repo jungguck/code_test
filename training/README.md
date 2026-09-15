@@ -83,6 +83,16 @@ python training/quiz/judge.py --answer         # 모범답안으로 채점 (정�
 `training/ENGLISH.md` — 함수 완성형(LeetCode) 형식, 제약조건 영어 단어표,
 지문 상투 표현, 인터뷰 영어 문장. 각 quiz 문제의 `problem.md` 하단에 **English version** 도 붙어있다.
 
+### 🔍 코드 문법이 이해 안 될 때
+`/explain` — 코드를 **문법 위주로, 초보자한테 설명하듯** 해설해주는 슬래시 커맨드.
+(정의: `.claude/commands/explain.md`)
+
+```
+/explain                                        # IDE에서 열어둔/선택한 코드
+/explain training/boj/p03_bracket/solution.py   # 파일 지정
+```
+알고리즘이 아니라 **파이썬 문법**을 설명한다. 틀린 버전 비교 + 실행 추적 표까지 나온다.
+
 ## 규칙
 - A/B 모드: 표준 라이브러리 자유롭게
 - C(RAW) 모드: `banned.txt` 를 먼저 읽을 것
