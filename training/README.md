@@ -55,9 +55,38 @@ RAW 채점기는 3가지를 본다:
 
 `allowed.txt` 가 있으면 그 표현은 예외 (예: 직접 만든 `stack.pop()` 은 허용, 리스트의 `.pop()` 은 금지).
 
+### D. QUIZ 모드 — 오늘의 랜덤 퀴즈용 문제 세트 🎲
+`training/quiz/` — 여러 개를 섞어서 계속 돌려 풀라고 만든 문제들.
+각 폴더에 **`problem.md`(한글+English) / `solution.py`(빈칸) / `answer.py`(정답 코드) / `tests/`(예상 입출력)** 이 들어있다.
+
+| 폴더 | 주제 | 핵심 알고리즘 | 난이도 |
+|------|------|--------------|--------|
+| quiz/q01_battery_log | 배터리 로그 | 시뮬레이션 + 클램핑 | ⭐ 쉬움 (브론즈) |
+| quiz/q02_min_window | 최소 이동 구간 | 투 포인터 / 슬라이딩 윈도우 | ⭐⭐⭐ 중간 (실버) |
+| quiz/q03_job_schedule | 마감일 스케줄링 | 그리디 + 최소 힙 | ⭐⭐⭐ 중간 (실버~골드) |
+| quiz/q04_wall_break | 벽 부수고 이동 | 상태 BFS `visited[r][c][k]` | ⭐⭐⭐⭐ 어려움 (골드) 🔥 |
+| quiz/q05_mod_subarray | M의 배수 구간 세기 | 누적합 + 나머지 카운팅 | ⭐⭐⭐⭐ 어려움 (골드) 🔥 |
+
+```
+python training/quiz/judge.py q04_wall_break   # 한 문제
+python training/quiz/judge.py                  # 전체
+python training/quiz/judge.py --answer         # 모범답안으로 채점 (정답 확인용)
+```
+
+푸는 순서 추천: **q01 → q02 → q05 → q03 → q04**
+(q05는 아이디어만 알면 코드가 10줄이라, 골드지만 q03보다 먼저 뚫린다)
+
+> 막히면 `problem.md` 의 **접근법** 섹션까지만 읽고 `answer.py` 는 보지 말 것.
+> 그래도 안 되면 `answer.py` 를 읽고 **닫은 뒤 처음부터 다시 타이핑**해라. 눈으로만 보면 안 남는다.
+
+### 🌐 영어 코딩테스트 대비
+`training/ENGLISH.md` — 함수 완성형(LeetCode) 형식, 제약조건 영어 단어표,
+지문 상투 표현, 인터뷰 영어 문장. 각 quiz 문제의 `problem.md` 하단에 **English version** 도 붙어있다.
+
 ## 규칙
 - A/B 모드: 표준 라이브러리 자유롭게
 - C(RAW) 모드: `banned.txt` 를 먼저 읽을 것
+- D(QUIZ) 모드: `answer.py` 는 최후의 수단. 먼저 `solution.py` 의 TODO 를 채워라
 
 ## 다른 컴퓨터에서 이어서 공부하기 💻↔️💻
 
