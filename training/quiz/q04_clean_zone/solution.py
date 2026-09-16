@@ -1,13 +1,10 @@
-import sys
 from collections import deque
-
-input = sys.stdin.readline
 
 n, m = map(int, input().split())
 
 grid = []
 for _ in range(n):
-    grid.append(input().strip())    # strip() 으로 줄 끝 개행문자를 떼어낸다
+    grid.append(input())     # input() 은 줄 끝 개행을 알아서 떼어준다
 
 visited = [[False] * m for _ in range(n)]
 

@@ -1,6 +1,6 @@
 # Q01 파이썬 문법 노트 🐍
 
-> 공통 문법(`input = sys.stdin.readline`, `map`, 출력)은 [`SYNTAX.md`](../SYNTAX.md) 참고.
+> 공통 문법(`input()`, `map`, 출력)은 [`SYNTAX.md`](../SYNTAX.md) 참고.
 
 ## 이 문제에 나오는 문법
 

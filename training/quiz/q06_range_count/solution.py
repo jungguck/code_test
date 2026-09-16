@@ -1,7 +1,4 @@
-import sys
 from bisect import bisect_left, bisect_right
-
-input = sys.stdin.readline
 
 n, q = map(int, input().split())
 a = list(map(int, input().split()))

@@ -1,13 +1,10 @@
-import sys
 from collections import deque
-
-input = sys.stdin.readline
 
 n, m, k = map(int, input().split())
 
 grid = []
 for _ in range(n):
-    grid.append(input().strip())
+    grid.append(input())
 
 # visited[행][열][부순횟수] -- 같은 칸이라도 "몇 번 부수고 왔는지"에 따라 다른 상태다
 visited = [[[False] * (k + 1) for _ in range(m)] for _ in range(n)]

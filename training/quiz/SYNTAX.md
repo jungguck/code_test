@@ -5,58 +5,62 @@
 
 ---
 
-## 1. 입력 읽기 — `input = sys.stdin.readline`
-
-```python
-import sys
-input = sys.stdin.readline      # 파일 맨 위에 딱 한 줄
-```
-
-이 한 줄만 넣으면 **평소 쓰던 `input()` 그대로** 쓰면서 속도만 빨라진다.
+## 1. 입력 읽기 — 그냥 `input()`
 
 ```python
 n = int(input())                        # 숫자 하나
 n, m = map(int, input().split())        # 한 줄에 숫자 여러 개
 a = list(map(int, input().split()))     # 한 줄에 숫자 N개
-s = input().strip()                     # 문자열 한 줄
+s = input()                             # 문자열 한 줄
 ```
 
-### 왜 바꾸는가
-기본 `input()` 은 호출할 때마다 프롬프트 처리 등 부가 작업을 한다.
-한두 번이면 티가 안 나지만 **10만 줄을 읽으면 그것만으로 몇 초**가 날아간다.
-`sys.stdin.readline` 은 그 과정을 건너뛴다. 코테에서 "시간 초과인데 알고리즘은 맞는 것 같다" 면
-십중팔구 여기다.
+규칙은 딱 두 개다.
 
-### ⚠️ 주의 1 — 개행문자가 딸려온다
-`readline` 은 줄 끝의 `\n` 까지 **그대로** 준다.
+1. **한 번 호출 = 한 줄.** 다음 `input()` 은 자동으로 다음 줄을 읽는다
+2. **줄 끝 개행(`\n`)은 알아서 떼어준다.** 그래서 `.strip()` 을 붙일 필요가 없다
+
+그래서 **문제 지문의 줄 구성이 곧 코드의 `input()` 호출 횟수**가 된다.
+
+```
+첫째 줄에 N, M          ->  n, m = map(int, input().split())
+둘째 줄에 N개의 정수    ->  a = list(map(int, input().split()))
+```
+
+값이 다음 줄로 넘어가 있으면 한 번의 호출로는 못 가져온다.
+```python
+n, m = map(int, input().split())
+# 입력이 "5 50"  (같은 줄)  -> ✓ n=5, m=50
+# 입력이 "5"⏎"50" (줄 나뉨)  -> ✗ ValueError: not enough values to unpack
+```
+
+### 언제 느려지나 (실제로 재본 결과)
+
+| 입력 줄 수 | `input()` | `sys.stdin.readline` |
+|---|---|---|
+| 1만 2천 줄 | 0.028초 | 0.022초 |
+| 3만 줄 | 0.044초 | 0.035초 |
+| 20만 줄 (읽기만) | 0.142초 | 0.071초 |
+
+**대부분의 문제는 그냥 `input()` 으로 충분하다.** 20만 줄이어도 0.15초다.
+
+다만 줄 수가 수십만이고 다른 계산도 무거우면 이 차이가 당락을 가를 수 있다.
+**시간 초과가 떴는데 알고리즘은 맞는 것 같을 때** 맨 위에 이 두 줄을 넣어보면 된다.
 
 ```python
-# 입력이 "abc\n" 일 때
-input()           # 'abc\n'   ← 줄바꿈이 붙어있다!
-input().strip()   # 'abc'     ✓
+import sys
+input = sys.stdin.readline      # 같은 이름에 더 빠른 함수를 꽂아둔다
 ```
 
-숫자는 신경 안 써도 된다. `int()` 와 `split()` 이 공백·개행을 알아서 무시한다.
-**문자열로 쓸 때만 `.strip()`** 을 붙이면 된다. (격자 문제에서 이거 빼먹으면 조용히 틀린다)
-
-### ⚠️ 주의 2 — 덮어쓰기다
-`input = sys.stdin.readline` 은 원래 `input` 이라는 이름에 **다른 함수를 덮어씌우는 것**이다.
-괄호 `()` 를 안 붙이는 데 주의.
+사용법은 똑같은데 **개행문자가 딸려온다**는 차이가 있다.
+숫자는 `int()`/`split()` 이 알아서 무시하지만, **문자열은 `.strip()` 이 필요**하다.
 
 ```python
-input = sys.stdin.readline()    # ✗ 지금 한 줄 읽어서 그 결과(문자열)를 담아버린다
-input = sys.stdin.readline      # ✓ 함수 자체를 담는다
+# readline 을 쓸 때, 입력 줄이 "11000" 이면
+input()            # '11000\n'  ← 길이 6!
+input().strip()    # '11000'     ✓
 ```
 
-### 참고 — 더 빠른 방법도 있다 (지금은 몰라도 됨)
-입력이 100만 줄쯤 되면 이런 것도 쓴다.
-```python
-data = sys.stdin.buffer.read().split()    # 입력 전체를 통째로 읽어 토큰 리스트로
-```
-줄 구분이 사라져서 `data[0]`, `data[1]` 처럼 **순서대로 꺼내 써야** 한다.
-빠르지만 읽기 어려워서, 이 훈련장에서는 쓰지 않는다.
-
----
+(`training/boj/`, `training/raw/` 의 풀이들이 이 방식을 쓴다. 거기서 이 줄을 보면 이 얘기다)
 
 ## 2. 한 줄에서 여러 값 받기
 
@@ -67,8 +71,8 @@ n, m = map(int, input().split())
 세 단계로 쪼개서 보면 이렇다.
 
 ```python
-input()            # '4 5\n'
-      .split()     # ['4', '5']      공백으로 쪼갠다 (개행도 알아서 처리)
+input()            # '4 5'
+      .split()     # ['4', '5']      공백으로 쪼갠다
 map(int, ...)      # 각 원소에 int() 를 적용
 n, m = ...         # 왼쪽 변수들에 하나씩 나눠 담는다 (언패킹)
 ```
@@ -187,8 +191,8 @@ if visited[nr][nc]:
 |------|----------|
 | `IndexError: list index out of range` | 범위 체크를 배열 접근보다 늦게 함 / 빈 리스트에 `pop()` |
 | `ValueError: too many values to unpack` | `n, m = ...` 인데 오른쪽 값 개수가 다름 |
-| `ValueError: invalid literal for int()` | 빈 줄이나 문자를 `int()` 함 (`.strip()` 누락 포함) |
+| `ValueError: invalid literal for int()` | 빈 줄이나 문자를 `int()` 함 / 읽는 줄 수가 어긋남 |
 | `TypeError: sequence item 0: expected str instance, int found` | `"\n".join(숫자리스트)` → `map(str, ...)` 빠뜨림 |
 | `TypeError: 'map' object is not subscriptable` | `map` 에 `list()` 를 안 씌우고 인덱스 접근 |
 | `RecursionError` | 깊은 재귀 DFS. **BFS(deque)로 바꿔라** |
-| 답은 맞는데 **시간 초과** | `input()` 그대로 씀 / `print` 반복 / 리스트 `.pop(0)` |
+| 답은 맞는데 **시간 초과** | `print` 를 수십만 번 호출 / 리스트 `.pop(0)` / 알고리즘이 O(N²) |

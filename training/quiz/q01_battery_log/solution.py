@@ -1,9 +1,5 @@
-import sys
-
-input = sys.stdin.readline     # 평소 쓰던 input() 과 사용법은 똑같다. 그냥 더 빠른 버전
-
-n, b = map(int, input().split())    # 첫 줄: 동작 횟수, 시작 배터리
-ds = list(map(int, input().split()))   # 둘째 줄: 변화량 N개
+n, b = map(int, input().split())        # 첫 줄: 동작 횟수, 시작 배터리
+ds = list(map(int, input().split()))    # 둘째 줄: 변화량 N개
 
 empty = 0
 
