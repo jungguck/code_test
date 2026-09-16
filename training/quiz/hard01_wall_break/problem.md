@@ -106,7 +106,7 @@ push 할 때 바로 visited 를 켜야 한다 — 꺼낼 때 켜면 같은 상�
 
 ## 채점
 ```
-python training/quiz/judge.py q04_wall_break
+python training/quiz/judge.py hard01_wall_break
 ```
 
 ---

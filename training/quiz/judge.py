@@ -3,7 +3,6 @@
 usage:
     python training/quiz/judge.py q01_battery_log      # 한 문제
     python training/quiz/judge.py                      # 전체
-    python training/quiz/judge.py --answer             # 모범답안(answer.py)으로 채점
 """
 import io
 import os
@@ -19,14 +18,11 @@ def norm(s):
     return "\n".join(l.rstrip() for l in s.strip().splitlines())
 
 
-def judge(prob, fname):
+def judge(prob):
     d = os.path.join(BASE, prob)
-    sol = os.path.join(d, fname)
+    sol = os.path.join(d, "solution.py")
     tdir = os.path.join(d, "tests")
-    print("=== %s (%s) ===" % (prob, fname))
-    if not os.path.exists(sol):
-        print("  [SKIP] %s 없음" % fname)
-        return False
+    print("=== %s ===" % prob)
     ok_all = True
     for fin in sorted(f for f in os.listdir(tdir) if f.endswith(".in")):
         num = fin[:-3]
@@ -60,12 +56,10 @@ def judge(prob, fname):
     return ok_all
 
 
-args = [a for a in sys.argv[1:] if not a.startswith("-")]
-fname = "answer.py" if "--answer" in sys.argv else "solution.py"
-targets = args or sorted(
+targets = sys.argv[1:] or sorted(
     x for x in os.listdir(BASE) if os.path.isdir(os.path.join(BASE, x))
 )
-results = [(t, judge(t, fname)) for t in targets]
+results = [(t, judge(t)) for t in targets]
 print("-" * 50)
 if all(ok for _, ok in results):
     print("ALL PASS  <<< done!")

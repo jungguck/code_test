@@ -9,17 +9,20 @@ def main():
 
     left = 0
     total = 0
-    best = n + 1          # "아직 못 찾음" 을 뜻하는 값
+    best = n + 1          # 있을 수 없는 큰 값 = "아직 못 찾음"
 
     for right in range(n):
-        # TODO 1: a[right] 를 total 에 더해 창을 오른쪽으로 늘린다
-        # TODO 2: total 이 s 이상인 "동안" (while!)
-        #           - best 를 (right - left + 1) 과 비교해 갱신
-        #           - total 에서 a[left] 를 빼고 left 를 한 칸 전진
-        pass
+        total += a[right]                 # 창을 오른쪽으로 한 칸 늘린다
 
-    # TODO 3: 한 번도 못 찾았으면 0, 찾았으면 best 를 출력
-    print(best)
+        # 조건을 만족하는 동안 왼쪽을 계속 당겨서 더 짧은 답을 찾는다.
+        # left 는 절대 뒤로 안 가므로 전체 이동 횟수는 N번 -> O(N)
+        while total >= s:
+            if right - left + 1 < best:
+                best = right - left + 1
+            total -= a[left]
+            left += 1
+
+    print(best if best <= n else 0)
 
 
 main()

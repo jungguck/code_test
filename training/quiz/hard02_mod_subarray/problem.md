@@ -93,7 +93,7 @@ s = 0
 
 ## 채점
 ```
-python training/quiz/judge.py q05_mod_subarray
+python training/quiz/judge.py hard02_mod_subarray
 ```
 
 ---

@@ -12,14 +12,15 @@ def main():
         c = int(data[2 + 2 * i])
         jobs.append((d, c))
 
-    # TODO 1: jobs 를 마감일 오름차순으로 정렬한다
+    jobs.sort()                     # 마감일 오름차순 (같으면 보상순, 상관없음)
 
-    heap = []       # 채택한 작업들의 보상을 담는 최소 힙
+    heap = []                       # 지금까지 채택한 작업들의 보상 (최소 힙)
     total = 0
     for d, c in jobs:
-        # TODO 2: c 를 힙에 넣고 total 에 더한다 (일단 채택)
-        # TODO 3: 힙 크기가 d 를 "넘으면" 가장 작은 보상을 빼고 total 에서 뺀다
-        pass
+        heapq.heappush(heap, c)     # 일단 채택하고
+        total += c
+        if len(heap) > d:           # d일까지 d개 초과 -> 칸이 모자람
+            total -= heapq.heappop(heap)   # 제일 싼 걸 포기
 
     print(total)
 
