@@ -1,23 +1,23 @@
 import sys
 
+input = sys.stdin.readline
 
-def main():
-    data = sys.stdin.buffer.read().split()
-    n = int(data[0])
+n = int(input())
+a = list(map(int, input().split()))
 
-    # prev2 = dp[i-2], prev1 = dp[i-1]
-    # 배열을 안 만들고 변수 두 개로만 굴린다 -> O(1) 메모리
-    prev2 = 0
-    prev1 = 0
+prev2 = 0     # 그저께까지의 최선  (dp[i-2])
+prev1 = 0     # 어제까지의 최선    (dp[i-1])
 
-    for i in range(1, 1 + n):
-        x = int(data[i])
-        # 오늘 쉰다: prev1 그대로 / 오늘 일한다: 어제는 쉬었어야 하므로 prev2 + x
-        cur = prev1 if prev1 > prev2 + x else prev2 + x
-        prev2 = prev1
-        prev1 = cur
+for x in a:
+    # 오늘 할 수 있는 선택은 두 가지뿐이다
+    rest = prev1          # ① 오늘 쉰다  -> 어제까지의 최선 그대로
+    work = prev2 + x      # ② 오늘 일한다 -> 어제는 쉬었어야 하니까
+                          #                그저께까지의 최선 + 오늘 성과
 
-    print(prev1)
+    cur = max(rest, work)  # 둘 중 큰 쪽이 "오늘까지의 최선"
 
+    # 하루 밀기: 어제가 그저께가 되고, 오늘이 어제가 된다
+    prev2 = prev1
+    prev1 = cur
 
-main()
+print(prev1)

@@ -1,26 +1,26 @@
 # Q02 파이썬 문법 노트 🐍
 
-> 공통 문법(입력 읽기, `def main()`, 조건부 표현식)은 [`SYNTAX.md`](../SYNTAX.md) 참고.
+> 공통 문법(입력 읽기, `map`, 출력)은 [`SYNTAX.md`](../SYNTAX.md) 참고.
 
 ## 이 문제에 나오는 문법
 
 ### 1. `list(map(int, ...))` — 한 번에 형 변환
 
 ```python
-a = list(map(int, data[2:2 + n]))
+a = list(map(int, input().split()))
 ```
 
 `map(함수, 반복가능한것)` 은 **원소 하나하나에 함수를 적용**한다.
 
 ```python
-list(map(int, [b'3', b'1', b'4']))    # → [3, 1, 4]
+list(map(int, ['3', '1', '4']))    # → [3, 1, 4]
 ```
 
 `map` 자체는 리스트가 아니라 **게으른 반복자**(lazy iterator)라서 `list()` 로 감싸야
 진짜 리스트가 된다.
 
 ```python
-m = map(int, [b'1', b'2'])
+m = map(int, ['1', '2'])
 m[0]           # ✗ TypeError — 인덱스 접근 불가
 list(m)[0]     # ✓ 1
 ```
@@ -30,7 +30,7 @@ list(m)[0]     # ✓ 1
 
 같은 걸 리스트 컴프리헨션으로 쓰면:
 ```python
-a = [int(x) for x in data[2:2 + n]]     # 결과 동일. map 이 조금 더 빠르다
+a = [int(x) for x in input().split()]     # 결과 동일. map 이 조금 더 빠르다
 ```
 
 ### 2. 두 포인터를 다루는 `for` + `while` 중첩
@@ -59,7 +59,10 @@ while total >= s:   # ✓ 줄일 수 있는 만큼 계속 줄인다
 ```python
 best = n + 1        # 있을 수 없는 값
 ...
-print(best if best <= n else 0)
+if best <= n:
+    print(best)
+else:
+    print(0)
 ```
 
 구간 길이는 아무리 길어도 `n` 이다. 그래서 `n + 1` 은 **절대 나올 수 없는 값**이고,
@@ -68,7 +71,11 @@ print(best if best <= n else 0)
 `float('inf')` (무한대) 를 써도 된다.
 ```python
 best = float('inf')
-print(best if best != float('inf') else 0)
+...
+if best == float('inf'):
+    print(0)
+else:
+    print(best)
 ```
 정수와 비교도 되고 어떤 정수보다도 크다. 다만 최종 출력 전에 **반드시 걸러내야** 한다.
 그대로 출력하면 `inf` 라고 찍힌다.

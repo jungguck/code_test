@@ -23,18 +23,25 @@ bisect_left(a, x)               # 바로 찾는다
 
 20만 번 호출하면 이 차이가 쌓인다. `from collections import deque` 도 같은 이유.
 
-### 2. `sorted(map(int, ...))` — 변환과 정렬을 한 번에
+### 2. `a.sort()` vs `sorted(a)` — 헷갈리면 답이 `None` 이 된다
 
 ```python
-a = sorted(map(int, data[2:2 + n]))
+a = list(map(int, input().split()))
+a.sort()          # a 자체를 정렬한다
 ```
 
-`sorted()` 는 **반복 가능한 무엇이든 받아서 새 리스트를 반환**한다.
-그래서 `list()` 로 감쌀 필요가 없다 — `sorted` 가 알아서 리스트를 만든다.
-
 ```python
-sorted(map(int, [b'3', b'1']))        # ✓ [1, 3]
-list(map(int, ...)).sort()            # ✗ None 이 된다 (sort 는 반환값이 없다)
+a = a.sort()          # ✗ a 가 None 이 된다! 최다 실수
+a.sort()              # ✓ 원본이 정렬된다
+a = sorted(a)         # ✓ 새 리스트를 받는다
+```
+
+`sort()` 는 **원본을 바꾸고 아무것도 돌려주지 않는다**(`None` 반환).
+`sorted()` 는 **원본을 두고 새 리스트를 만들어 돌려준다.**
+
+`sorted()` 는 리스트가 아닌 것도 받아서 리스트로 만들어준다.
+```python
+a = sorted(map(int, input().split()))    # 변환 + 정렬을 한 번에 (list() 불필요)
 ```
 
 | | 원본 | 반환 |
@@ -71,35 +78,25 @@ i = bisect_left(a, x)
 
 **반드시 정렬된 리스트여야 한다.** 안 되어 있으면 에러 없이 엉뚱한 값을 준다.
 
-### 4. 수동 인덱스 포인터로 입력 읽기
+### 4. 질의를 줄 단위로 반복해서 읽기
 
 ```python
-p = 2 + n
 for _ in range(q):
-    lo = int(data[p])
-    hi = int(data[p + 1])
-    p += 2
+    lo, hi = map(int, input().split())
 ```
 
-토큰을 통째로 읽었기 때문에 **지금 어디까지 읽었는지**를 직접 들고 있어야 한다.
-`p` 를 정확히 소비한 만큼(`+= 2`) 올리는 게 핵심. 이걸 틀리면 `ValueError` 가 나거나
-조용히 엉뚱한 답이 나온다.
+질의 개수만큼 반복하면서 **한 줄씩** 읽는다. `_` 는 "몇 번째인지 안 쓴다"는 표시.
 
-`zip` 으로 두 개씩 짝지어 도는 방법도 있다:
-```python
-qs = data[2 + n:]
-for lo, hi in zip(qs[0::2], qs[1::2]):      # 짝수 번째, 홀수 번째를 짝지어서
-    ...
-```
-`a[시작::간격]` 은 **확장 슬라이싱**. `qs[0::2]` 는 0,2,4... 번째를 뽑는다.
+읽는 줄 수가 정확히 맞아야 한다. 하나라도 덜 읽거나 더 읽으면 그 뒤가 전부 밀려서
+`ValueError` 가 나거나 조용히 엉뚱한 답이 나온다.
 
 ### 5. 출력 모아서 한 번에
 
 ```python
-out = []
+answers = []
 for ...:
-    out.append(답)
-sys.stdout.write("\n".join(map(str, out)) + "\n")
+    answers.append(답)
+print("\n".join(map(str, answers)))
 ```
 
 `print` 를 20만 번 부르면 그것만으로 몇 초가 날아간다.

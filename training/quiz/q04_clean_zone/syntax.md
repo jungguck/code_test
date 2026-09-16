@@ -23,22 +23,30 @@ print(bad)        # [[True, False, False], [True, False, False]]
 `[[False] * m for _ in range(n)]` 은 **매 반복마다 새 리스트를 만들어서** 안전하다.
 1차원(`[0] * m`)은 숫자가 불변이라 이 문제가 없다. **2차원부터 조심.**
 
-### 2. bytes → str 변환 `.decode()`
+### 2. `input().strip()` — 줄 끝 개행 떼어내기
 
 ```python
-grid = [data[2 + i].decode() for i in range(n)]
+grid.append(input().strip())
 ```
 
-입력을 `sys.stdin.buffer.read()` 로 읽으면 원소가 **bytes** 다.
-bytes 를 인덱싱하면 글자가 아니라 **숫자(아스키 코드)** 가 나온다.
+`sys.stdin.readline` 은 줄 끝의 `\n` 까지 **그대로** 준다.
+숫자는 `int()` 가 알아서 무시하지만, **문자열로 쓸 땐 반드시 떼어내야** 한다.
 
 ```python
-b'0100'[0]             # 48   ← '0' 의 아스키 코드
-b'0100'[0] == '0'      # False!  비교가 조용히 실패한다
-b'0100'.decode()[0]    # '0'  ✓
+# 입력 줄이 "11000\n" 일 때
+row = input()            # '11000\n'  ← 길이가 6이다!
+len(row)                 # 6
+row[5]                   # '\n'  ← 격자 칸인 줄 알았는데 개행문자
+
+row = input().strip()    # '11000'   ✓ 길이 5
 ```
 
-**에러가 안 나고 그냥 틀린 답이 나온다**는 게 제일 무섭다. 격자 문제에서 `.decode()` 를 습관화할 것.
+**에러가 안 나고 그냥 틀린 답이 나온다**는 게 무섭다. 격자 문제에서 `.strip()` 을 습관화할 것.
+
+`strip()` 은 **양쪽 끝의 공백·개행만** 없앤다. 가운데는 안 건드린다.
+```python
+'  a b  '.strip()     # 'a b'   ← 가운데 공백은 그대로
+```
 
 ### 3. `deque` — BFS 전용 큐
 

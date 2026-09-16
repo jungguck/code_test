@@ -5,99 +5,116 @@
 
 ---
 
-## 1. 입력 읽기 — 세 가지 방식과 속도 차이
+## 1. 입력 읽기 — `input = sys.stdin.readline`
 
 ```python
-# ① 기본 (느림) — 줄 수가 100줄 이하일 때만
-n = int(input())
-
-# ② readline (빠름) — 줄 단위로 읽어야 할 때
 import sys
-input = sys.stdin.readline
-n = int(input())
-
-# ③ 통째로 읽기 (제일 빠름) — quiz 문제들이 쓰는 방식
-import sys
-data = sys.stdin.buffer.read().split()
+input = sys.stdin.readline      # 파일 맨 위에 딱 한 줄
 ```
 
-③이 하는 일을 한 단계씩 뜯어보면:
+이 한 줄만 넣으면 **평소 쓰던 `input()` 그대로** 쓰면서 속도만 빨라진다.
 
 ```python
-sys.stdin.buffer.read()        # 입력 전체를 bytes 하나로   b'5 50\n-30 -40 60\n'
-                     .split()  # 공백/줄바꿈으로 전부 쪼갬   [b'5', b'50', b'-30', ...]
+n = int(input())                        # 숫자 하나
+n, m = map(int, input().split())        # 한 줄에 숫자 여러 개
+a = list(map(int, input().split()))     # 한 줄에 숫자 N개
+s = input().strip()                     # 문자열 한 줄
 ```
 
-**줄 구분이 사라진다**는 게 포인트다. `5 50\n-30` 이든 `5\n50\n-30` 이든 결과가 같아서,
-"첫 줄에 N, 둘째 줄에 N개" 같은 형식을 신경 쓸 필요가 없다. 앞에서부터 순서대로 꺼내 쓰면 된다.
+### 왜 바꾸는가
+기본 `input()` 은 호출할 때마다 프롬프트 처리 등 부가 작업을 한다.
+한두 번이면 티가 안 나지만 **10만 줄을 읽으면 그것만으로 몇 초**가 날아간다.
+`sys.stdin.readline` 은 그 과정을 건너뛴다. 코테에서 "시간 초과인데 알고리즘은 맞는 것 같다" 면
+십중팔구 여기다.
+
+### ⚠️ 주의 1 — 개행문자가 딸려온다
+`readline` 은 줄 끝의 `\n` 까지 **그대로** 준다.
 
 ```python
-n = int(data[0])            # 0번째 토큰
-b = int(data[1])            # 1번째 토큰
-a = list(map(int, data[2:2 + n]))   # 2번째부터 n개
+# 입력이 "abc\n" 일 때
+input()           # 'abc\n'   ← 줄바꿈이 붙어있다!
+input().strip()   # 'abc'     ✓
 ```
 
-### `buffer` 가 뭔데?
-- `sys.stdin.read()` → **str**(글자) 로 읽는다. 유니코드 해석을 하느라 조금 느리다
-- `sys.stdin.buffer.read()` → **bytes**(바이트) 로 읽는다. 해석을 안 해서 더 빠르다
+숫자는 신경 안 써도 된다. `int()` 와 `split()` 이 공백·개행을 알아서 무시한다.
+**문자열로 쓸 때만 `.strip()`** 을 붙이면 된다. (격자 문제에서 이거 빼먹으면 조용히 틀린다)
 
-`int()` 는 bytes 도 알아서 숫자로 바꿔줘서 `int(b'42')` 가 그냥 된다.
-하지만 **문자열로 써야 할 때는 `.decode()` 가 필요**하다.
+### ⚠️ 주의 2 — 덮어쓰기다
+`input = sys.stdin.readline` 은 원래 `input` 이라는 이름에 **다른 함수를 덮어씌우는 것**이다.
+괄호 `()` 를 안 붙이는 데 주의.
 
 ```python
-int(b'42')            # ✓ 42
-b'0100'[0]            # ✗ 48  (문자가 아니라 바이트 숫자가 나온다!)
-b'0100'.decode()[0]   # ✓ '0'
+input = sys.stdin.readline()    # ✗ 지금 한 줄 읽어서 그 결과(문자열)를 담아버린다
+input = sys.stdin.readline      # ✓ 함수 자체를 담는다
 ```
 
-격자 문제(`0100` 같은 줄)에서 이거 때문에 자주 깨진다. → `data[i].decode()`
+### 참고 — 더 빠른 방법도 있다 (지금은 몰라도 됨)
+입력이 100만 줄쯤 되면 이런 것도 쓴다.
+```python
+data = sys.stdin.buffer.read().split()    # 입력 전체를 통째로 읽어 토큰 리스트로
+```
+줄 구분이 사라져서 `data[0]`, `data[1]` 처럼 **순서대로 꺼내 써야** 한다.
+빠르지만 읽기 어려워서, 이 훈련장에서는 쓰지 않는다.
 
 ---
 
-## 2. `def main():` 으로 감싸는 이유
+## 2. 한 줄에서 여러 값 받기
 
 ```python
-def main():
-    ...
-main()
+n, m = map(int, input().split())
 ```
 
-장식이 아니라 **속도** 때문이다. 파이썬은 함수 안의 **지역 변수**를 전역 변수보다
-훨씬 빠르게 찾는다. 반복이 10만 번 넘어가면 이것만으로 체감이 될 정도로 차이가 난다.
-
-덤으로 `return` 으로 함수를 즉시 빠져나올 수 있다. (전역 코드에서는 `return` 을 못 쓴다)
+세 단계로 쪼개서 보면 이렇다.
 
 ```python
-def main():
-    ...
-    if 답을_찾음:
-        print(answer)
-        return        # 여기서 끝. 아래로 안 내려감
-    print(-1)
+input()            # '4 5\n'
+      .split()     # ['4', '5']      공백으로 쪼갠다 (개행도 알아서 처리)
+map(int, ...)      # 각 원소에 int() 를 적용
+n, m = ...         # 왼쪽 변수들에 하나씩 나눠 담는다 (언패킹)
 ```
+
+**개수가 안 맞으면 에러**가 난다.
+```python
+n, m = map(int, "4 5 6".split())    # ✗ ValueError: too many values to unpack
+```
+
+### `list()` 를 언제 씌우는가
+`map` 은 리스트가 아니라 **한 번만 훑고 사라지는 반복자**다.
+
+```python
+a = map(int, input().split())
+a[0]            # ✗ TypeError: 'map' object is not subscriptable
+
+a = list(map(int, input().split()))
+a[0]            # ✓
+```
+
+- `n, m = map(...)` → 바로 풀어서 담으니까 `list()` **불필요**
+- `a = list(map(...))` → 나중에 `a[i]` 로 접근하니까 `list()` **필요**
 
 ---
 
-## 3. 출력 빠르게 하기
-
-`print` 는 호출할 때마다 화면에 내보내려 해서 **호출 횟수 자체가 비싸다.**
-답이 여러 줄이면 리스트에 모아서 한 번에 내보낸다.
+## 3. 출력
 
 ```python
-out = []
+print(a, b)        # "20 2"   — 콤마 자리에 공백이 들어간다
+print(*nums)       # 리스트를 풀어서 공백 구분으로 출력
+```
+
+답이 **여러 줄**이면 `print` 를 여러 번 부르지 말고 모아서 한 번에 내보낸다.
+`print` 는 호출 자체가 비싸서, 20만 번 부르면 그것만으로 몇 초가 걸린다.
+
+```python
+answers = []
 for ...:
-    out.append(답)
-sys.stdout.write("\n".join(map(str, out)) + "\n")
+    answers.append(답)
+print("\n".join(map(str, answers)))
 ```
 
-- `map(str, out)` — 숫자 리스트를 문자열로 바꾼다 (`join` 은 문자열만 받는다)
-- `"\n".join([...])` — 사이사이에 줄바꿈을 끼워 하나의 큰 문자열로
-
-한 줄에 여러 값을 공백으로 출력할 땐 그냥 콤마를 쓰면 된다.
-
+`join` 은 **문자열만** 받는다. 숫자 리스트면 반드시 `map(str, ...)` 을 거칠 것.
 ```python
-print(a, b)        # "20 2"  — 콤마 자리에 공백이 들어간다
-print(*nums)       # 리스트를 풀어서 공백 구분 출력
+"\n".join([1, 2, 3])              # ✗ TypeError
+"\n".join(map(str, [1, 2, 3]))    # ✓ "1\n2\n3"
 ```
 
 ---
@@ -105,9 +122,9 @@ print(*nums)       # 리스트를 풀어서 공백 구분 출력
 ## 4. `_` (언더바)
 
 ```python
-for _ in range(t):
+for _ in range(n):
 ```
-특별한 문법이 아니라 **그냥 변수 이름**이다. `for i in range(t)` 와 똑같이 동작한다.
+특별한 문법이 아니라 **그냥 변수 이름**이다. `for i in range(n)` 과 똑같이 동작한다.
 "이 변수는 안 쓸 거예요"라는 관습적 표시일 뿐.
 
 ---
@@ -115,15 +132,15 @@ for _ in range(t):
 ## 5. "비어 있는 것은 거짓" (truthy / falsy)
 
 ```python
-if not stack:      # 스택이 비었으면
 while q:           # 큐에 뭔가 있는 동안
+if not stack:      # 스택이 비었으면
 ```
 
 파이썬은 아래를 전부 **False** 로 친다:
 ```
 0        0.0        ''        []        {}        ()       None
 ```
-그래서 `len(stack) == 0` 대신 `not stack`, `len(q) > 0` 대신 `q` 라고 쓴다.
+그래서 `len(q) > 0` 대신 그냥 `q`, `len(stack) == 0` 대신 `not stack` 이라고 쓴다.
 
 ---
 
@@ -138,46 +155,40 @@ if 0 <= i < n and arr[i] == x:     # ✓ 범위 확인이 먼저 → 안전
 if arr[i] == x and 0 <= i < n:     # ✗ 범위 밖이면 IndexError 로 죽는다
 ```
 
-```python
-if not stack or stack.pop() != PAIR[ch]:   # ✓ 비었으면 pop 을 안 한다
-```
-
 **"안전한지 먼저 확인 → 그 다음에 접근"** 순서. 코테에서 무한히 반복되는 패턴이다.
 
 ---
 
-## 7. 연쇄 비교
+## 7. `continue` 로 조건을 한 줄씩 걸러내기
+
+조건을 `and` 로 길게 잇는 대신, **아닌 경우를 위에서 하나씩 쳐내면** 읽기 쉬워진다.
 
 ```python
-if 0 <= nr < n:
+# ✗ 한 줄이 길어서 어디가 틀렸는지 안 보인다
+if 0 <= nr < n and 0 <= nc < m and not visited[nr][nc] and grid[nr][nc] == '1':
+    ...
+
+# ✓ 이유별로 한 줄씩
+if nr < 0 or nr >= n:
+    continue          # 위아래로 격자 밖
+if visited[nr][nc]:
+    continue          # 이미 가본 칸
+...
 ```
-`0 <= nr and nr < n` 과 같다. 파이썬에서만 되는 문법이고, 격자 범위 체크에서 늘 쓴다.
+
+`continue` 는 **이번 반복만 건너뛰고 다음 반복으로** 간다 (`break` 는 루프를 완전히 탈출).
+들여쓰기가 깊어지는 걸 막아줘서 **early continue** 라고 부른다.
 
 ---
 
-## 8. 조건부 표현식 (삼항 연산자)
-
-```python
-print(best if best <= n else 0)
-```
-`A if 조건 else B` = 조건이 참이면 A, 아니면 B. 아래와 같다.
-```python
-if best <= n:
-    print(best)
-else:
-    print(0)
-```
-`if` 문과 달리 **값을 만들어내는 식**이라서 `print(...)` 안이나 대입문 오른쪽에 바로 쓸 수 있다.
-
----
-
-## 9. 자주 만나는 에러와 원인
+## 8. 자주 만나는 에러와 원인
 
 | 에러 | 대표 원인 |
 |------|----------|
 | `IndexError: list index out of range` | 범위 체크를 배열 접근보다 늦게 함 / 빈 리스트에 `pop()` |
+| `ValueError: too many values to unpack` | `n, m = ...` 인데 오른쪽 값 개수가 다름 |
+| `ValueError: invalid literal for int()` | 빈 줄이나 문자를 `int()` 함 (`.strip()` 누락 포함) |
 | `TypeError: sequence item 0: expected str instance, int found` | `"\n".join(숫자리스트)` → `map(str, ...)` 빠뜨림 |
-| `ValueError: invalid literal for int()` | 입력 토큰을 잘못 세서 엉뚱한 걸 `int()` 함 |
+| `TypeError: 'map' object is not subscriptable` | `map` 에 `list()` 를 안 씌우고 인덱스 접근 |
 | `RecursionError` | 깊은 재귀 DFS. **BFS(deque)로 바꿔라** |
-| `KeyError` | 딕셔너리에 없는 키 조회 → `.get(k, 기본값)` 사용 |
-| 답은 맞는데 **시간 초과** | `input()` 반복 / `print` 반복 / 리스트 `.pop(0)` |
+| 답은 맞는데 **시간 초과** | `input()` 그대로 씀 / `print` 반복 / 리스트 `.pop(0)` |

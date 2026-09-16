@@ -7,7 +7,7 @@
 ### 1. `%` (나머지)와 음수
 
 ```python
-s = (s + int(data[i])) % m
+s = (s + x) % m
 ```
 
 `%` 는 나눈 나머지다. 파이썬의 `%` 는 **결과 부호가 오른쪽 값을 따른다**는 게 특징.
@@ -67,8 +67,8 @@ cnt[s] += 1                 # KeyError 가 안 난다
 
 ```python
 s = 0
-for i in range(2, 2 + n):
-    s = (s + int(data[i])) % m
+for x in a:
+    s = (s + x) % m
     cnt[s] += 1
 ```
 
