@@ -9,16 +9,12 @@
 ## 1. 형식이 두 가지다 — 이게 제일 큰 차이
 
 ### A. 표준입출력형 (백준, Codeforces, AtCoder)
-익숙한 그거. `sys.stdin` 으로 읽고 `print`.
+익숙한 그거. `input()` 으로 읽고 `print` 로 답을 찍는다.
 
 ```python
-import sys
-def main():
-    data = sys.stdin.buffer.read().split()
-    n = int(data[0])
-    a = list(map(int, data[1:1 + n]))
-    print(sum(a))
-main()
+n = int(input())
+a = list(map(int, input().split()))
+print(sum(a))
 ```
 
 ### B. 함수 완성형 (LeetCode, HackerRank, 실무 인터뷰 대부분) ⭐

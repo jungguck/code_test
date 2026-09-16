@@ -80,15 +80,26 @@ else:
 정수와 비교도 되고 어떤 정수보다도 크다. 다만 최종 출력 전에 **반드시 걸러내야** 한다.
 그대로 출력하면 `inf` 라고 찍힌다.
 
-### 4. `min` 대신 `if` 로 갱신하기
+### 4. 길이에 이름을 붙여서 갱신하기
 
 ```python
-if right - left + 1 < best:
-    best = right - left + 1
+length = right - left + 1
+
+if length < best:
+    best = length
 ```
-`best = min(best, right - left + 1)` 과 결과는 같다.
-`min()` 은 함수 호출이라 10만 번 넘게 돌면 `if` 쪽이 눈에 띄게 빠르다.
-읽기 좋은 건 `min` 이니, **루프 횟수가 적으면 `min`, 많으면 `if`** 로 생각하면 된다.
+
+`best = min(best, right - left + 1)` 한 줄로 써도 결과는 똑같다.
+그런데 `length` 라는 **이름을 붙여 놓으면** "지금 창의 길이" 라는 게 바로 보이고,
+같은 식을 두 번 쓰지 않아도 된다.
+
+```python
+# 같은 뜻. 익숙해지면 이렇게 써도 된다
+best = min(best, right - left + 1)
+```
+
+`min()` 은 함수 호출이라 아주 조금 느리지만, 이 정도는 신경 쓸 수준이 아니다.
+**읽기 쉬운 쪽을 고르면 된다.**
 
 ### 5. 구간 길이 공식 `right - left + 1`
 

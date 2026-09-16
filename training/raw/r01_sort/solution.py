@@ -1,8 +1,6 @@
 import sys
 
-input = sys.stdin.readline
 sys.setrecursionlimit(10 ** 6)
-
 
 def merge(left, right):
     """이미 내림차순으로 정렬된 두 리스트를 합쳐서 하나의 내림차순 리스트로."""
@@ -29,7 +27,6 @@ def merge(left, right):
 
     return result
 
-
 def merge_sort(arr):
     """arr 을 내림차순으로 정렬한 새 리스트를 반환."""
     # 종료조건: 원소가 0개나 1개면 이미 정렬된 상태다
@@ -41,7 +38,6 @@ def merge_sort(arr):
     left = merge_sort(arr[:mid])
     right = merge_sort(arr[mid:])
     return merge(left, right)
-
 
 n = int(input())
 nums = list(map(int, input().split()))

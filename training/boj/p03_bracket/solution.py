@@ -1,12 +1,8 @@
-import sys
-
-input = sys.stdin.readline
-
 PAIR = {')': '(', ']': '[', '}': '{'}   # 닫는 괄호 -> 짝이 되는 여는 괄호
 
 t = int(input())
 for _ in range(t):
-    s = input().strip()
+    s = input()
     stack = []
     ok = True
     for ch in s:

@@ -1,10 +1,5 @@
-import sys
-
-input = sys.stdin.readline
-
 OPEN = "([{"
 CLOSE = ")]}"
-
 
 class Stack:
     """고정 크기 배열 + top 인덱스로 만든 스택."""
@@ -27,10 +22,9 @@ class Stack:
         self.top -= 1               # top 만 한 칸 내린다
         return value                # 지울 필요 없다. 다음 push 가 덮어쓸 자리니까
 
-
 t = int(input())
 for _ in range(t):
-    s = input().strip()
+    s = input()
     stack = Stack(len(s))
     ok = True
 

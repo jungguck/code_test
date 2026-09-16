@@ -1,9 +1,5 @@
-import sys
-
-input = sys.stdin.readline
-
 n = int(input())
-words = [input().strip() for _ in range(n)]
+words = [input() for _ in range(n)]
 
 # 1) dict 로 횟수 세기
 cnt = {}

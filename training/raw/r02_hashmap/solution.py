@@ -1,9 +1,4 @@
-import sys
-
-input = sys.stdin.readline
-
 BUCKETS = 50021   # 넉넉한 소수
-
 
 def my_hash(s):
     """문자열 s 를 0 ~ BUCKETS-1 범위의 정수로 바꾼다."""
@@ -12,7 +7,6 @@ def my_hash(s):
         # 자리올림하듯 앞 글자를 31배씩 밀어 올린다 -> 글자 순서까지 반영된다
         h = h * 31 + ord(c)
     return h % BUCKETS
-
 
 class HashMap:
     def __init__(self):
@@ -37,11 +31,10 @@ class HashMap:
             for entry in bucket:
                 yield entry
 
-
 n = int(input())
 hm = HashMap()
 for _ in range(n):
-    hm.add(input().strip())
+    hm.add(input())
 
 best_word = None
 best_cnt = -1
