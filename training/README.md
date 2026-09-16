@@ -5,7 +5,7 @@ mobile_robot_proto_type 코드에서 실제로 쓰는 개념들을 코테 문제
 ## 진행 방식
 
 1. `dayNN_.../problem.md` 읽기
-2. `solution.py` 의 `TODO` 부분만 채우기 (함수 시그니처는 건드리지 말 것)
+2. `solution.py` 를 열기 **전에** 직접 풀어보기 (이제 정답 코드가 들어있다)
 3. 채점:
    ```
    python training/day01_wheel_speed/test_solution.py   # (A모드 폴더는 아직 이 레포에 없음)

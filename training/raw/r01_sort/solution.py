@@ -10,21 +10,37 @@ def merge(left, right):
     i = 0   # left 에서 볼 위치
     j = 0   # right 에서 볼 위치
 
-    # TODO 1: 양쪽 다 남아있는 동안, 앞쪽 두 개를 비교해서 큰 쪽을 result 에 붙이고
-    #         그쪽 인덱스를 1 증가시킨다
+    # 양쪽 다 남아있는 동안: 앞쪽 두 개를 비교해 "큰 쪽"을 가져온다 (내림차순이니까)
+    while i < len(left) and j < len(right):
+        if left[i] >= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
 
-    # TODO 2: 한쪽이 먼저 바닥나면, 다른 쪽에 남은 것들을 전부 뒤에 붙인다
+    # 한쪽이 바닥나면 다른 쪽에 남은 건 이미 정렬되어 있으니 그대로 붙인다
+    while i < len(left):
+        result.append(left[i])
+        i += 1
+    while j < len(right):
+        result.append(right[j])
+        j += 1
 
     return result
 
 
 def merge_sort(arr):
     """arr 을 내림차순으로 정렬한 새 리스트를 반환."""
-    # TODO 3: 길이가 1 이하면 이미 정렬된 것이므로 그대로 반환 (종료조건)
+    # 종료조건: 원소가 0개나 1개면 이미 정렬된 상태다
+    if len(arr) <= 1:
+        return arr
 
-    # TODO 4: 가운데를 기준으로 반으로 쪼개서 각각 merge_sort 를 재귀 호출하고,
-    #         그 둘을 merge 해서 반환
-    raise NotImplementedError
+    # 반으로 쪼개서 각각 정렬한 뒤(분할), 둘을 합친다(정복)
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    return merge(left, right)
 
 
 n = int(input())
