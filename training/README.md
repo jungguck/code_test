@@ -80,9 +80,16 @@ RAW 채점기는 3가지를 본다:
 | quiz/q04_clean_zone | 청소 구역 나누기 | BFS 연결 요소 | ⭐⭐⭐ 중간 (실버) |
 | quiz/q05_no_overheat | 과열 없이 작업하기 | 1차원 DP (점화식) | ⭐⭐⭐ 중간 (실버) |
 | quiz/q06_range_count | 구간 안의 값 개수 | 정렬 + 이분탐색 | ⭐⭐⭐ 중간 (실버) |
+| quiz/q07_belt_rotate | 컨베이어 회전 | deque 회전 / 나머지 | ⭐⭐ 실버 |
+| quiz/q08_max_jobs | 작업 최대 개수 | 그리디 (끝시각 정렬) | ⭐⭐⭐ 중간 (실버) |
+| quiz/q09_range_sum | 구간 에너지 합 | 누적합 (prefix sum) | ⭐⭐ 실버 |
+| quiz/q10_cut_logs | 통나무 자르기 | 파라메트릭 이분탐색 | ⭐⭐⭐ 중간 (실버) |
+| quiz/q11_pick_three | 세 부품 고르기 | 브루트포스 / 조합 | ⭐⭐ 브론즈~실버 |
+| quiz/q12_part_count | 부품 개수 세기 | 해시 (Counter) | ⭐⭐ 브론즈~실버 |
 
-이 6개가 **코테 빈출 패턴 5개**를 하나씩 담고 있다 (`ENGLISH.md` 4번 항목 참고):
+앞의 q01~q06 이 **코테 빈출 패턴**을 하나씩 담고 있다 (`ENGLISH.md` 4번 항목 참고):
 해시/누적합 · 투 포인터 · 힙 · 그래프 탐색 · DP · 이분탐색.
+q07~q12 는 그 위에 **deque · 그리디 · 누적합 · 파라메트릭 서치 · 완전탐색 · 해시** 를 더 얹은 확장 세트다.
 
 ```
 python training/quiz/judge.py q04_clean_zone   # 한 문제
