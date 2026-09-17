@@ -1,19 +1,14 @@
 n = int(input())
 a = list(map(int, input().split()))
 
-prev2 = 0     # 그저께까지의 최선  (dp[i-2])
-prev1 = 0     # 어제까지의 최선    (dp[i-1])
+# dp[i] = i일째까지 봤을 때 얻을 수 있는 최대 성과
+dp = [0] * n
+dp[0] = a[0]
+if n > 1:
+    dp[1] = max(a[0], a[1])              # 첫 이틀은 붙여 못 하니 더 큰 하루
 
-for x in a:
-    # 오늘 할 수 있는 선택은 두 가지뿐이다
-    rest = prev1          # ① 오늘 쉰다  -> 어제까지의 최선 그대로
-    work = prev2 + x      # ② 오늘 일한다 -> 어제는 쉬었어야 하니까
-                          #                그저께까지의 최선 + 오늘 성과
+for i in range(2, n):
+    # 오늘 쉰다: dp[i-1]  /  오늘 일한다: dp[i-2] + a[i]  (어제는 쉬었어야)
+    dp[i] = max(dp[i - 1], dp[i - 2] + a[i])
 
-    cur = max(rest, work)  # 둘 중 큰 쪽이 "오늘까지의 최선"
-
-    # 하루 밀기: 어제가 그저께가 되고, 오늘이 어제가 된다
-    prev2 = prev1
-    prev1 = cur
-
-print(prev1)
+print(dp[n - 1])

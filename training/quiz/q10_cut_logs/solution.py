@@ -1,8 +1,5 @@
-import sys
-input = sys.stdin.readline
-
 n, m = map(int, input().split())         # 통나무 수, 필요한 길이 합
-a = list(map(int, input().split()))
+a = list(map(int, input().split()))      # 입력은 두 줄뿐이라 그냥 input() 이면 충분
 
 lo, hi = 0, max(a)                       # 절단기 높이 후보 범위
 ans = 0

@@ -1,11 +1,10 @@
+from collections import Counter
+
 n = int(input())
 words = [input() for _ in range(n)]
 
-# 1) dict 로 횟수 세기
-cnt = {}
-for w in words:
-    cnt[w] = cnt.get(w, 0) + 1      # 없으면 0에서 시작, 있으면 +1
+cnt = Counter(words)                       # 단어별 등장 횟수 세기
 
-# 2) 횟수는 큰 게, 단어는 작은 게 이김
-#    -cnt[w] 로 부호를 뒤집으면 "둘 다 작은 게 이김"이 되어 min 한 방에 끝난다
-print(min(cnt, key=lambda w: (-cnt[w], w)))
+best = max(cnt.values())                   # 가장 많이 나온 횟수
+winners = [w for w in cnt if cnt[w] == best]   # 그 횟수인 단어들
+print(min(winners))                        # 그 중 사전순으로 가장 앞선 것
