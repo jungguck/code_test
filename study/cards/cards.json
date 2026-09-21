@@ -75,6 +75,12 @@
      "has_bug_note": true
     }
    ]
+  },
+  {
+   "key": "04_etc",
+   "title": "기타",
+   "subtitle": "구현 / 수학 / 문자열 / 시뮬레이션",
+   "cards": []
   }
  ]
 }

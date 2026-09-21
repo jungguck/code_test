@@ -23,6 +23,7 @@ CATS = [
     ("01_graph", "Graph 탐색 & 완전탐색", "BFS / DFS / 백트래킹"),
     ("02_ds",    "자료구조 응용",          "스택 / 큐 / 우선순위 큐 / 해시 / 투 포인터"),
     ("03_dp",    "동적 계획법",            "Dynamic Programming"),
+    ("04_etc",   "기타",                  "구현 / 수학 / 문자열 / 시뮬레이션"),
 ]
 
 # 카드에 반드시 있어야 하는 항목 (순서 무관)
@@ -92,7 +93,7 @@ def wanted():
     for name in ("Bronze", "Silver", "Gold", "Platinum", "Diamond", "Ruby"):
         for rank in ("V", "IV", "III", "II", "I"):
             tiers.append(name + " " + rank)
-    key = {"01_graph_bruteforce": "01_graph", "02_data_structure": "02_ds", "03_dp": "03_dp"}
+    key = {"01_graph_bruteforce": "01_graph", "02_data_structure": "02_ds", "03_dp": "03_dp", "04_etc": "04_etc"}
     out, seen = [], set()
     for g in sorted(data):
         for p in data[g]["problems"]:
