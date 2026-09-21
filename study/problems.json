@@ -1,0 +1,1133 @@
+{
+ "01_graph_bruteforce": {
+  "title": "Graph 탐색 & 완전탐색 (BFS / DFS / 백트래킹)",
+  "problems": [
+   {
+    "no": "2231",
+    "title": "분해합",
+    "tier": 4,
+    "ref": false
+   },
+   {
+    "no": "2798",
+    "title": "블랙잭",
+    "tier": 4,
+    "ref": true
+   },
+   {
+    "no": "18312",
+    "title": "시각",
+    "tier": 4,
+    "ref": false
+   },
+   {
+    "no": "19532",
+    "title": "수학은 비대면강의입니다",
+    "tier": 4,
+    "ref": false
+   },
+   {
+    "no": "22864",
+    "title": "피로도",
+    "tier": 4,
+    "ref": false
+   },
+   {
+    "no": "15721",
+    "title": "번데기",
+    "tier": 6,
+    "ref": false
+   },
+   {
+    "no": "18511",
+    "title": "큰 수 구성하기",
+    "tier": 6,
+    "ref": true
+   },
+   {
+    "no": "1969",
+    "title": "DNA",
+    "tier": 7,
+    "ref": true
+   },
+   {
+    "no": "2422",
+    "title": "한윤정이 이탈리아에 가서 아이스크림을 사먹는데",
+    "tier": 7,
+    "ref": false
+   },
+   {
+    "no": "5568",
+    "title": "카드 놓기",
+    "tier": 7,
+    "ref": true
+   },
+   {
+    "no": "16439",
+    "title": "치킨치킨치킨",
+    "tier": 7,
+    "ref": false
+   },
+   {
+    "no": "2606",
+    "title": "바이러스",
+    "tier": 8,
+    "ref": false
+   },
+   {
+    "no": "14501",
+    "title": "퇴사",
+    "tier": 8,
+    "ref": false
+   },
+   {
+    "no": "15649",
+    "title": "N과 M (1)",
+    "tier": 8,
+    "ref": true
+   },
+   {
+    "no": "15650",
+    "title": "N과 M (2)",
+    "tier": 8,
+    "ref": true
+   },
+   {
+    "no": "15651",
+    "title": "N과 M (3)",
+    "tier": 8,
+    "ref": true
+   },
+   {
+    "no": "15652",
+    "title": "N과 M (4)",
+    "tier": 8,
+    "ref": true
+   },
+   {
+    "no": "15654",
+    "title": "N과 M (5)",
+    "tier": 8,
+    "ref": true
+   },
+   {
+    "no": "15655",
+    "title": "N과 M (6)",
+    "tier": 8,
+    "ref": true
+   },
+   {
+    "no": "15656",
+    "title": "N과 M (7)",
+    "tier": 8,
+    "ref": true
+   },
+   {
+    "no": "15657",
+    "title": "N과 M (8)",
+    "tier": 8,
+    "ref": true
+   },
+   {
+    "no": "16508",
+    "title": "전공책",
+    "tier": 8,
+    "ref": false
+   },
+   {
+    "no": "16937",
+    "title": "두 스티커",
+    "tier": 8,
+    "ref": false
+   },
+   {
+    "no": "17626",
+    "title": "Four Squares",
+    "tier": 8,
+    "ref": true
+   },
+   {
+    "no": "1182",
+    "title": "부분수열의 합",
+    "tier": 9,
+    "ref": true
+   },
+   {
+    "no": "1260",
+    "title": "DFS와 BFS",
+    "tier": 9,
+    "ref": false
+   },
+   {
+    "no": "2503",
+    "title": "숫자 야구",
+    "tier": 9,
+    "ref": true
+   },
+   {
+    "no": "2961",
+    "title": "도영이가 만든 맛있는 음식",
+    "tier": 9,
+    "ref": false
+   },
+   {
+    "no": "9079",
+    "title": "동전 게임",
+    "tier": 9,
+    "ref": false
+   },
+   {
+    "no": "10971",
+    "title": "외판원 순회 2",
+    "tier": 9,
+    "ref": false
+   },
+   {
+    "no": "11725",
+    "title": "트리의 부모 찾기",
+    "tier": 9,
+    "ref": false
+   },
+   {
+    "no": "14620",
+    "title": "꽃길",
+    "tier": 9,
+    "ref": true
+   },
+   {
+    "no": "15663",
+    "title": "N과 M (9)",
+    "tier": 9,
+    "ref": true
+   },
+   {
+    "no": "15664",
+    "title": "N과 M (10)",
+    "tier": 9,
+    "ref": true
+   },
+   {
+    "no": "15665",
+    "title": "N과 M (11)",
+    "tier": 9,
+    "ref": true
+   },
+   {
+    "no": "15666",
+    "title": "N과 M (12)",
+    "tier": 9,
+    "ref": true
+   },
+   {
+    "no": "1325",
+    "title": "효율적인 해킹",
+    "tier": 10,
+    "ref": false
+   },
+   {
+    "no": "2178",
+    "title": "미로 탐색",
+    "tier": 10,
+    "ref": false
+   },
+   {
+    "no": "2615",
+    "title": "오목",
+    "tier": 10,
+    "ref": false
+   },
+   {
+    "no": "2667",
+    "title": "단지번호붙이기",
+    "tier": 10,
+    "ref": false
+   },
+   {
+    "no": "14888",
+    "title": "연산자 끼워넣기",
+    "tier": 10,
+    "ref": false
+   },
+   {
+    "no": "14940",
+    "title": "쉬운 최단거리",
+    "tier": 10,
+    "ref": false
+   },
+   {
+    "no": "16918",
+    "title": "봄버맨",
+    "tier": 10,
+    "ref": false
+   },
+   {
+    "no": "1025",
+    "title": "제곱수 찾기",
+    "tier": 11,
+    "ref": false
+   },
+   {
+    "no": "1174",
+    "title": "줄어드는 수",
+    "tier": 11,
+    "ref": false
+   },
+   {
+    "no": "1548",
+    "title": "부분 삼각 수열",
+    "tier": 11,
+    "ref": false
+   },
+   {
+    "no": "2668",
+    "title": "숫자고르기",
+    "tier": 11,
+    "ref": false
+   },
+   {
+    "no": "3980",
+    "title": "선발 명단",
+    "tier": 11,
+    "ref": false
+   },
+   {
+    "no": "6443",
+    "title": "애너그램",
+    "tier": 11,
+    "ref": false
+   },
+   {
+    "no": "7569",
+    "title": "토마토",
+    "tier": 11,
+    "ref": true
+   },
+   {
+    "no": "7576",
+    "title": "토마토",
+    "tier": 11,
+    "ref": false
+   },
+   {
+    "no": "12919",
+    "title": "A와 B 2",
+    "tier": 11,
+    "ref": false
+   },
+   {
+    "no": "13023",
+    "title": "ABCDE",
+    "tier": 11,
+    "ref": false
+   },
+   {
+    "no": "13549",
+    "title": "숨바꼭질 3",
+    "tier": 11,
+    "ref": false
+   },
+   {
+    "no": "14712",
+    "title": "넴모넴모 (Easy)",
+    "tier": 11,
+    "ref": true
+   },
+   {
+    "no": "15661",
+    "title": "링크와 스타트",
+    "tier": 11,
+    "ref": true
+   },
+   {
+    "no": "15686",
+    "title": "치킨 배달",
+    "tier": 11,
+    "ref": false
+   },
+   {
+    "no": "16987",
+    "title": "계란으로 계란치기",
+    "tier": 11,
+    "ref": false
+   },
+   {
+    "no": "17836",
+    "title": "공주님을 구해라!",
+    "tier": 11,
+    "ref": false
+   },
+   {
+    "no": "21315",
+    "title": "카드 섞기",
+    "tier": 11,
+    "ref": true
+   },
+   {
+    "no": "1062",
+    "title": "가르침",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "1967",
+    "title": "트리의 지름",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "2573",
+    "title": "빙산",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "2580",
+    "title": "스도쿠",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "2636",
+    "title": "치즈",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "2661",
+    "title": "좋은수열",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "5547",
+    "title": "일루미네이션",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "9663",
+    "title": "N-Queen",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "14500",
+    "title": "테트로미노",
+    "tier": 12,
+    "ref": true
+   },
+   {
+    "no": "14502",
+    "title": "연구소",
+    "tier": 12,
+    "ref": true
+   },
+   {
+    "no": "16234",
+    "title": "인구 이동",
+    "tier": 12,
+    "ref": true
+   },
+   {
+    "no": "16973",
+    "title": "직사각형 탈출",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "18430",
+    "title": "무기 공학",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "18513",
+    "title": "샘터",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "21278",
+    "title": "호석이 두 마리 치킨",
+    "tier": 12,
+    "ref": true
+   },
+   {
+    "no": "1600",
+    "title": "말이 되고픈 원숭이",
+    "tier": 13,
+    "ref": false
+   },
+   {
+    "no": "2206",
+    "title": "벽 부수고 이동하기",
+    "tier": 13,
+    "ref": true
+   },
+   {
+    "no": "4179",
+    "title": "불!",
+    "tier": 13,
+    "ref": true
+   },
+   {
+    "no": "9466",
+    "title": "텀 프로젝트",
+    "tier": 13,
+    "ref": false
+   },
+   {
+    "no": "14391",
+    "title": "종이 조각",
+    "tier": 13,
+    "ref": false
+   },
+   {
+    "no": "16637",
+    "title": "괄호 추가하기",
+    "tier": 13,
+    "ref": false
+   },
+   {
+    "no": "16932",
+    "title": "모양 만들기",
+    "tier": 13,
+    "ref": false
+   },
+   {
+    "no": "16954",
+    "title": "움직이는 미로 탈출",
+    "tier": 13,
+    "ref": true
+   },
+   {
+    "no": "18808",
+    "title": "스티커 붙이기",
+    "tier": 13,
+    "ref": true
+   },
+   {
+    "no": "22868",
+    "title": "산책 (small)",
+    "tier": 13,
+    "ref": false
+   },
+   {
+    "no": "22944",
+    "title": "죽음의 비",
+    "tier": 13,
+    "ref": true
+   },
+   {
+    "no": "17136",
+    "title": "색종이 붙이기",
+    "tier": 14,
+    "ref": false
+   },
+   {
+    "no": "21943",
+    "title": "연산 최대로",
+    "tier": 14,
+    "ref": false
+   },
+   {
+    "no": "22946",
+    "title": "원 이동하기 1",
+    "tier": 14,
+    "ref": false
+   },
+   {
+    "no": "22948",
+    "title": "원 이동하기 2",
+    "tier": 14,
+    "ref": false
+   },
+   {
+    "no": "1799",
+    "title": "비숍",
+    "tier": 16,
+    "ref": false
+   }
+  ]
+ },
+ "02_data_structure": {
+  "title": "자료구조 응용 (스택 / 큐 / 우선순위 큐 / 해시 / 투 포인터)",
+  "problems": [
+   {
+    "no": "11728",
+    "title": "배열 합치기",
+    "tier": 6,
+    "ref": true
+   },
+   {
+    "no": "1158",
+    "title": "요세푸스 문제",
+    "tier": 7,
+    "ref": true
+   },
+   {
+    "no": "1620",
+    "title": "나는야 포켓몬 마스터 이다솜",
+    "tier": 7,
+    "ref": false
+   },
+   {
+    "no": "2164",
+    "title": "카드2",
+    "tier": 7,
+    "ref": true
+   },
+   {
+    "no": "9012",
+    "title": "괄호",
+    "tier": 7,
+    "ref": true
+   },
+   {
+    "no": "10828",
+    "title": "스택",
+    "tier": 7,
+    "ref": true
+   },
+   {
+    "no": "10866",
+    "title": "덱",
+    "tier": 7,
+    "ref": true
+   },
+   {
+    "no": "14425",
+    "title": "문자열 집합",
+    "tier": 7,
+    "ref": true
+   },
+   {
+    "no": "18258",
+    "title": "큐 2",
+    "tier": 7,
+    "ref": true
+   },
+   {
+    "no": "1935",
+    "title": "후위 표기식2",
+    "tier": 8,
+    "ref": true
+   },
+   {
+    "no": "1966",
+    "title": "프린터 큐",
+    "tier": 8,
+    "ref": true
+   },
+   {
+    "no": "2075",
+    "title": "N번째 큰 수",
+    "tier": 8,
+    "ref": false
+   },
+   {
+    "no": "2346",
+    "title": "풍선 터뜨리기",
+    "tier": 8,
+    "ref": true
+   },
+   {
+    "no": "21921",
+    "title": "블로그",
+    "tier": 8,
+    "ref": false
+   },
+   {
+    "no": "1874",
+    "title": "스택 수열",
+    "tier": 9,
+    "ref": false
+   },
+   {
+    "no": "4358",
+    "title": "생태학",
+    "tier": 9,
+    "ref": false
+   },
+   {
+    "no": "10799",
+    "title": "쇠막대기",
+    "tier": 9,
+    "ref": false
+   },
+   {
+    "no": "11279",
+    "title": "최대 힙",
+    "tier": 9,
+    "ref": true
+   },
+   {
+    "no": "11286",
+    "title": "절댓값 힙",
+    "tier": 10,
+    "ref": true
+   },
+   {
+    "no": "20922",
+    "title": "겹치는 건 싫어",
+    "tier": 10,
+    "ref": false
+   },
+   {
+    "no": "2470",
+    "title": "두 용액",
+    "tier": 11,
+    "ref": true
+   },
+   {
+    "no": "2493",
+    "title": "탑",
+    "tier": 11,
+    "ref": false
+   },
+   {
+    "no": "2504",
+    "title": "괄호의 값",
+    "tier": 11,
+    "ref": true
+   },
+   {
+    "no": "22862",
+    "title": "가장 긴 짝수 연속한 부분 수열 (large)",
+    "tier": 11,
+    "ref": false
+   },
+   {
+    "no": "1806",
+    "title": "부분합",
+    "tier": 12,
+    "ref": true
+   },
+   {
+    "no": "2800",
+    "title": "괄호 제거",
+    "tier": 12,
+    "ref": true
+   },
+   {
+    "no": "3151",
+    "title": "합이 0",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "7662",
+    "title": "이중 우선순위 큐",
+    "tier": 12,
+    "ref": true
+   },
+   {
+    "no": "15961",
+    "title": "회전 초밥",
+    "tier": 12,
+    "ref": true
+   },
+   {
+    "no": "21939",
+    "title": "문제 추천 시스템 Version 1",
+    "tier": 12,
+    "ref": true
+   },
+   {
+    "no": "22942",
+    "title": "데이터 체커",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "22945",
+    "title": "팀 빌딩",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "20366",
+    "title": "같이 눈사람 만들래?",
+    "tier": 13,
+    "ref": false
+   },
+   {
+    "no": "1918",
+    "title": "후위 표기식",
+    "tier": 14,
+    "ref": true
+   },
+   {
+    "no": "2696",
+    "title": "중앙값 구하기",
+    "tier": 14,
+    "ref": false
+   },
+   {
+    "no": "7453",
+    "title": "합이 0인 네 정수",
+    "tier": 14,
+    "ref": false
+   },
+   {
+    "no": "20442",
+    "title": "ㅋㅋ루ㅋㅋ",
+    "tier": 14,
+    "ref": false
+   },
+   {
+    "no": "21942",
+    "title": "부품 대여장",
+    "tier": 14,
+    "ref": true
+   },
+   {
+    "no": "21944",
+    "title": "문제 추천 시스템 Version 2",
+    "tier": 14,
+    "ref": true
+   },
+   {
+    "no": "21279",
+    "title": "광부 호석",
+    "tier": 16,
+    "ref": false
+   }
+  ]
+ },
+ "03_dp": {
+  "title": "동적 계획법 (Dynamic Programming)",
+  "problems": [
+   {
+    "no": "10870",
+    "title": "피보나치 수 5",
+    "tier": 4,
+    "ref": false
+   },
+   {
+    "no": "2748",
+    "title": "피보나치 수 2",
+    "tier": 5,
+    "ref": false
+   },
+   {
+    "no": "1010",
+    "title": "다리 놓기",
+    "tier": 6,
+    "ref": true
+   },
+   {
+    "no": "9655",
+    "title": "돌 게임",
+    "tier": 6,
+    "ref": true
+   },
+   {
+    "no": "2839",
+    "title": "설탕 배달",
+    "tier": 7,
+    "ref": false
+   },
+   {
+    "no": "1463",
+    "title": "1로 만들기",
+    "tier": 8,
+    "ref": false
+   },
+   {
+    "no": "2407",
+    "title": "조합",
+    "tier": 8,
+    "ref": false
+   },
+   {
+    "no": "2579",
+    "title": "계단 오르기",
+    "tier": 8,
+    "ref": true
+   },
+   {
+    "no": "9095",
+    "title": "1, 2, 3 더하기",
+    "tier": 8,
+    "ref": true
+   },
+   {
+    "no": "11726",
+    "title": "2×n 타일링",
+    "tier": 8,
+    "ref": true
+   },
+   {
+    "no": "11727",
+    "title": "2×n 타일링 2",
+    "tier": 8,
+    "ref": true
+   },
+   {
+    "no": "17626",
+    "title": "Four Squares",
+    "tier": 8,
+    "ref": true
+   },
+   {
+    "no": "1912",
+    "title": "연속합",
+    "tier": 9,
+    "ref": false
+   },
+   {
+    "no": "11053",
+    "title": "가장 긴 증가하는 부분 수열",
+    "tier": 9,
+    "ref": false
+   },
+   {
+    "no": "11055",
+    "title": "가장 큰 증가하는 부분 수열",
+    "tier": 9,
+    "ref": false
+   },
+   {
+    "no": "22857",
+    "title": "가장 긴 짝수 연속한 부분 수열 (small)",
+    "tier": 9,
+    "ref": false
+   },
+   {
+    "no": "1890",
+    "title": "점프",
+    "tier": 10,
+    "ref": true
+   },
+   {
+    "no": "2156",
+    "title": "포도주 시식",
+    "tier": 10,
+    "ref": true
+   },
+   {
+    "no": "9465",
+    "title": "스티커",
+    "tier": 10,
+    "ref": true
+   },
+   {
+    "no": "10844",
+    "title": "쉬운 계단 수",
+    "tier": 10,
+    "ref": false
+   },
+   {
+    "no": "11660",
+    "title": "구간 합 구하기 5",
+    "tier": 10,
+    "ref": false
+   },
+   {
+    "no": "15724",
+    "title": "주지수",
+    "tier": 10,
+    "ref": false
+   },
+   {
+    "no": "21317",
+    "title": "징검다리 건너기",
+    "tier": 10,
+    "ref": false
+   },
+   {
+    "no": "22869",
+    "title": "징검다리 건너기 (small)",
+    "tier": 10,
+    "ref": true
+   },
+   {
+    "no": "2225",
+    "title": "합분해",
+    "tier": 11,
+    "ref": false
+   },
+   {
+    "no": "2294",
+    "title": "동전 2",
+    "tier": 11,
+    "ref": true
+   },
+   {
+    "no": "5557",
+    "title": "1학년",
+    "tier": 11,
+    "ref": true
+   },
+   {
+    "no": "9084",
+    "title": "동전",
+    "tier": 11,
+    "ref": false
+   },
+   {
+    "no": "9251",
+    "title": "LCS",
+    "tier": 11,
+    "ref": true
+   },
+   {
+    "no": "12865",
+    "title": "평범한 배낭",
+    "tier": 11,
+    "ref": false
+   },
+   {
+    "no": "14567",
+    "title": "선수과목 (Prerequisite)",
+    "tier": 11,
+    "ref": true
+   },
+   {
+    "no": "15486",
+    "title": "퇴사 2",
+    "tier": 11,
+    "ref": false
+   },
+   {
+    "no": "17485",
+    "title": "진우의 달 여행 (Large)",
+    "tier": 11,
+    "ref": true
+   },
+   {
+    "no": "1106",
+    "title": "호텔",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "1915",
+    "title": "가장 큰 정사각형",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "2056",
+    "title": "작업",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "2073",
+    "title": "수도배관공사",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "2293",
+    "title": "동전 1",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "2624",
+    "title": "동전 바꿔주기",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "2631",
+    "title": "줄세우기",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "2758",
+    "title": "로또",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "10942",
+    "title": "팰린드롬?",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "18427",
+    "title": "함께 블록 쌓기",
+    "tier": 12,
+    "ref": true
+   },
+   {
+    "no": "21923",
+    "title": "곡예 비행",
+    "tier": 12,
+    "ref": true
+   },
+   {
+    "no": "21941",
+    "title": "문자열 제거",
+    "tier": 12,
+    "ref": false
+   },
+   {
+    "no": "1005",
+    "title": "ACM Craft",
+    "tier": 13,
+    "ref": false
+   },
+   {
+    "no": "1520",
+    "title": "내리막 길",
+    "tier": 13,
+    "ref": true
+   },
+   {
+    "no": "1695",
+    "title": "팰린드롬 만들기",
+    "tier": 13,
+    "ref": false
+   },
+   {
+    "no": "1823",
+    "title": "수확",
+    "tier": 13,
+    "ref": false
+   },
+   {
+    "no": "2228",
+    "title": "구간 나누기",
+    "tier": 13,
+    "ref": false
+   },
+   {
+    "no": "2629",
+    "title": "양팔저울",
+    "tier": 13,
+    "ref": false
+   },
+   {
+    "no": "11049",
+    "title": "행렬 곱셈 순서",
+    "tier": 13,
+    "ref": false
+   },
+   {
+    "no": "20542",
+    "title": "받아쓰기",
+    "tier": 13,
+    "ref": false
+   },
+   {
+    "no": "3687",
+    "title": "성냥개비",
+    "tier": 14,
+    "ref": false
+   },
+   {
+    "no": "20181",
+    "title": "꿈틀꿈틀 호석 애벌레 - 효율성",
+    "tier": 14,
+    "ref": false
+   }
+  ]
+ }
+}
