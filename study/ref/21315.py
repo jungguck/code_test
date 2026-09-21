@@ -1,12 +1,7 @@
 # Authored by : yj2221
 # Co-authored by : -
 # Link : http://boj.kr/9857ec1183e144acb9d49a7316bdf595
-
 from itertools import permutations
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
 
 def shuffle(card1, card2, card3):
     card = card2 + card1 + card3

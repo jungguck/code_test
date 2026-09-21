@@ -1,11 +1,6 @@
 # Authored by : gusdn3477
 # Co-authored by : -
 # Link : http://boj.kr/1938989c82c1488282cdb2c22d4a9e17
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
-
 def backTracking(idx):
     global ans
     if len(poc) >= N:

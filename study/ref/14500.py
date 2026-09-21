@@ -1,11 +1,8 @@
 #Authored by : shjeong92
 #Co-authored by : -
 #Link : http://boj.kr/04d943fbb1d14ca0b17c62790a25fe8a
-import sys
-from itertools import combinations as combi
 
-def input():
-    return sys.stdin.readline().rstrip()
+from itertools import combinations as combi
 
 N, M = map(int,input().split())
 #보드입력받기
@@ -61,7 +58,6 @@ def dfs(x,y,val,depth):
                 #끝난후 다시 방문가능처리해줌.
                 check[nx][ny] = True
 
-
 for i in range(N):
     for j in range(M):
         #시작블록을 다시방문하면안됨
@@ -72,6 +68,5 @@ for i in range(N):
 
         temp = block_T(i,j)
         answer = max(answer,temp)
-
 
 print(answer)

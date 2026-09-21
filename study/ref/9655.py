@@ -1,11 +1,6 @@
 # Authored by : yj2221
 # Co-authored by : -
 # Link : http://boj.kr/f4bdc1e4d3f34003a1080645069b0ee7
-
-import sys
-def input():
-    return sys.stdin.readline().rstrip()
-
 dp = ['' for _ in range(1001)]
 dp[1] = 'SK'
 

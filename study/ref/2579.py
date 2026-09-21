@@ -1,11 +1,6 @@
 # Authored by : cieske
 # Co-authored by : -
 # Link : http://boj.kr/3d9ff337b9bc420a975cf6783b298212
-
-import sys
-def input():
-    return sys.stdin.readline().rstrip()
-
 n = int(input())
 lst = [int(input()) for _ in range(n)]
 
@@ -17,4 +12,3 @@ if n > 3:
     print(dp[-1])
 else:
     print(sum(lst)) #2칸 이하면 모두 밟는게 최대
-

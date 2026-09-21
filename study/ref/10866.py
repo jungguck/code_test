@@ -1,11 +1,7 @@
 # Authored by : gusdn3477
 # Co-authored by : -
 # Link : http://boj.kr/1cf1ea352dba44daa9768b67c7f109e9
-import sys
 from collections import deque
-
-def input():
-    return sys.stdin.readline().rstrip()
 
 queue = deque()
 N = int(input())

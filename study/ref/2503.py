@@ -1,11 +1,6 @@
 # Authored by : gusdn3477
 # Co-authored by : -
 # Link : http://boj.kr/4e0ef6629dd34e659f1b3d6d470ccc41
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
-
 def isDifferentAndNotZero(num):
     if num[0] == num[1] or num[0] == num[2] or num[1] == num[2]:
         return False

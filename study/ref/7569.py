@@ -1,11 +1,7 @@
 # Authored by : gusdn3477
 # Co-authored by : tony9402
 # Link : http://boj.kr/8a53cdacfc6340c894fb47257232f244
-import sys
 from collections import deque
-
-def input():
-    return sys.stdin.readline().rstrip()
 
 def checkMap():
     for z in range(H):

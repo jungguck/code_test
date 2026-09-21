@@ -1,11 +1,7 @@
 # Authored by : gusdn3477
 # Co-authored by : -
 # Link : http://boj.kr/946d652cbd7a4361aaeff5ff1f2612d5
-import sys
 from itertools import combinations
-
-def input():
-    return sys.stdin.readline().rstrip()
 
 N = int(input())
 arr = []

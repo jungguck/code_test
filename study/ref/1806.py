@@ -1,11 +1,6 @@
 # Authored by : cieske
 # Co-authored by : -
 # Link : http://boj.kr/a020564994b8493a92b189861e35636c
-
-import sys
-def input():
-    return sys.stdin.readline().rstrip()
-
 n, s = map(int, input().split())
 lst = list(map(int, input().split()))
 

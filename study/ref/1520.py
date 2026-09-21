@@ -1,12 +1,6 @@
 # Authored by : gusdn3477
 # Co-authored by : -
 # Link : http://boj.kr/5c0cf17f207745eb899923dfc5881c26
-
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
-
 def DFS(x,y):
     if x == N-1 and y == M-1:
         return 1

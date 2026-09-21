@@ -1,11 +1,6 @@
 # Authored by : kis03160
 # Co-authored by : tony9402
 # Link : http://boj.kr/a074da0ce3c34775a50d386da92800e4
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
-
 def answer(line, max_seq, coupon):
 
     count = 0

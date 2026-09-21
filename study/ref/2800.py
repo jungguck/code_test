@@ -1,11 +1,6 @@
 # Authored by : tony9402
 # Co-authored by : -
 # Link : http://boj.kr/9908832547364dfd87342eb0a2a873ce
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
-
 s = input()
 N = len(s)
 

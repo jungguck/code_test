@@ -1,11 +1,6 @@
 # Authored by : cieske
 # Co-authored by : -
 # Link : http://boj.kr/39643867e537451a9ae49e16ec4f2f3f
-
-import sys
-def input():
-    return sys.stdin.readline().rstrip()
-
 t = int(input())
 for _ in range(t):
     n = int(input())

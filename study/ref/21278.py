@@ -1,13 +1,8 @@
 # Authored by : yj2221
 # Co-authored by : -
 # Link : http://boj.kr/b52664ec81c3495db8b8091cd12f95d5
-
 from itertools import combinations
 from collections import deque
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
 
 N, M = map(int, input().split())
 graph = {i: [] for i in range(1, N+1)}
@@ -37,7 +32,6 @@ def bfs(start1, start2, graph, N):
             q.append((nxt, dist + 1))
             result[nxt] = dist + 1
     return sum(result)
-
 
 def solution(graph, N):
     candidate = [i for i in range(1, N+1)]

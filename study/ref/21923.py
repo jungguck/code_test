@@ -1,12 +1,6 @@
 # Authored by : yj2221
 # Co-authored by : -
 # Link : http://boj.kr/33f73b2bfd3a443fa03f4e9f240b41a1
-
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
-
 n, m = map(int, input().split())
 board = [list(map(int, input().split())) for _ in range(n)]
 

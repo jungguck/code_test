@@ -1,11 +1,6 @@
 # Authored by : gusdn3477
 # Co-authored by : -
 # Link : http://boj.kr/b56f91d1e33b44c2b24d57cd460eace2
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
-
 def backTracking(num):
     global ans
     if num > N:

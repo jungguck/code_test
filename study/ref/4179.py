@@ -1,12 +1,7 @@
 # Authored by : yj2221
 # Co-authored by : -
 # Link : http://boj.kr/bf6009039d6b410291eb253279ce0c8f
-
 from collections import deque
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
 
 r, c = map(int, input().split())
 board = [[-1] * (c+2) for _ in range(r+2)]

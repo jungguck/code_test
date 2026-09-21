@@ -1,12 +1,7 @@
 # Authored by : gusdn3477
 # Co-authored by : -
 # Link : http://boj.kr/1be97bce103a4572936b311c3f1a096b
-
-import sys
 from collections import deque
-
-def input():
-    return sys.stdin.readline().rstrip()
 
 def BFS(x,y):
     global flag, total

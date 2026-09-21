@@ -1,11 +1,6 @@
 # Authored by : tony9402
 # Co-authored by : -
 # Link : http://boj.kr/e43bf55556be4bd19c0ae586bcf5d12a
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
-
 N, M = map(int, input().split())
 arr  = sorted(list(map(int, input().split())))
 choose = [ 0 for _ in range(10) ]
@@ -30,4 +25,3 @@ def dfs(idx, cnt):
         used[i] = 0
 
 dfs(0, 0)
-

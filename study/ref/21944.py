@@ -1,13 +1,7 @@
 # Authored by : leejh9226
 # Co-authored by : -
 # Link : http://boj.kr/171a010d7b2247588d9dba8b3fa192c2
-
 import heapq
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
-
 
 max_g_heap = [[] for _ in range(101)]
 min_g_heap = [[] for _ in range(101)]
@@ -18,7 +12,6 @@ l_lookup = [0] * 100001
 g_lookup = [0] * 100001
 
 removed = set()
-
 
 def add(p, l, g):
     """
@@ -46,14 +39,12 @@ def add(p, l, g):
     l_lookup[P] = l
     g_lookup[P] = g
 
-
 def remove(p, l, g):
     """
     난이도, 문제번호, 알고리즘 유형으로 식별되는 유일한 문제를 "삭제되었음"으로 표시
     - 실제 힙에서 삭제하는 동작은, recommend에서 heappop을 호출할 때 "삭제되었음"으로 표시된 문제를 제거하는 것
     """
     removed.add(l << 24 | p << 7 | g)
-
 
 def is_removed(lpg):
     """
@@ -63,7 +54,6 @@ def is_removed(lpg):
     if abs(lpg) in removed:
         return True
     return False
-
 
 def efficient_top(target_heap):
     """
@@ -76,7 +66,6 @@ def efficient_top(target_heap):
     if target_heap:
         return (abs(target_heap[0]) >> 7) & 0x1FFFF
     return None
-
 
 n = int(input())
 for _ in range(n):

@@ -1,12 +1,8 @@
 # Authored by : chj3748
 # Co-authored by : -
 # Link : http://boj.kr/2eb814a8afac4ceab99cbb89db78a2c6
-import sys
 import heapq
 from collections import defaultdict
-
-def input():
-    return sys.stdin.readline().rstrip()
 
 for T in range(int(input())):
     max_q = []

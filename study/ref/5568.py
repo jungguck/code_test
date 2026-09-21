@@ -1,11 +1,7 @@
 # Authored by : gusdn3477
 # Co-authored by : -
 # Link : http://boj.kr/0dd94001579e4341b3ea06ed523d2cba
-import sys
 from itertools import permutations
-
-def input():
-    return sys.stdin.readline().rstrip()
 
 n = int(input())
 arr = []

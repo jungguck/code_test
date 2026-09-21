@@ -1,11 +1,6 @@
 # Authored by : chj3748
 # Co-authored by : -
 # Link : http://boj.kr/fa5cc7635c6b497495804944b5696e12
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
-
 string1 = '_' + input()
 string2 = '_' + input()
 len1 = len(string1)
@@ -20,4 +15,3 @@ for i in range(1, len1):
             dp[i][j] = max(dp[i][j - 1], dp[i - 1][j])
 
 print(dp[len1 - 1][len2 - 1])
-

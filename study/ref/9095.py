@@ -1,11 +1,6 @@
 # Authored by : osy0056
 # Co-authored by : -
 # Link : http://boj.kr/da3d10e3ebc945349d778cb06444ffb1
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
-
 tc = int(input())
 
 dp = [0] * 15

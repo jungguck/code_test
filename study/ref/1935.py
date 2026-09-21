@@ -1,11 +1,7 @@
 # Authored by : gusdn3477
 # Co-authored by : -
 # Link : http://boj.kr/db333837b5af4d84a2a5ba1dc83d2086
-import sys
 from collections import deque
-
-def input():
-    return sys.stdin.readline().rstrip()
 
 N = int(input())
 arr = input()

@@ -1,14 +1,10 @@
 # Authored by : unodostre
 # Co-authored by : -
 # Link : http://boj.kr/8fcc7b5fbb884f788d0a0ad88803d046
-
-import sys
 from collections import deque
 from itertools import combinations
 
-input = sys.stdin.readline
 direction = [(0, 1), (-1, 0), (0, -1), (1, 0)]
-
 
 def get_pos():
     empty, virus = [], []
@@ -22,16 +18,13 @@ def get_pos():
                 virus.append((i, j))
     return empty, virus
 
-
 def set_wall(comb):
     for y, x in comb:
         arr[y][x] = 1
 
-
 def collapse_wall(comb):
     for y, x in comb:
         arr[y][x] = 0
-
 
 def bfs(virus):
     queue = deque(virus)
@@ -52,7 +45,6 @@ def bfs(virus):
                         queue.append((ny, nx))  # 큐에 삽입
                         count += 1  # 바이러스 개수 +1
     return count
-
 
 # 입력
 n, m = map(int, input().split())

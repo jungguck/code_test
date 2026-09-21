@@ -1,12 +1,6 @@
 # Authored by : yj2221
 # Co-authored by : -
 # Link : http://boj.kr/16de6b69c0ca419a908289ee440a407a
-
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
-
 def calculate_days_per_month():
     month_days = {1: 31, 2: 28, 3: 31, 4: 30, 5: 31, 6: 30, 7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31}
     days = [0]

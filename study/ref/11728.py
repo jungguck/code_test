@@ -1,11 +1,6 @@
 # Authored by : wassup37
 # Co-authored by : -
 # Link : http://boj.kr/160f85b47e1c4351b89ce2691c91fc6b
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
-
 N, M = map(int, input().split())
 A = list(map(int, input().split()))
 B = list(map(int, input().split()))

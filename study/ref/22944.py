@@ -1,12 +1,8 @@
 # Authored by : yj2221
 # Co-authored by : -
 # Link : http://boj.kr/62858e6576584934b6d2db90001acd5b
-
 import sys
 sys.setrecursionlimit(10**4)
-
-def input():
-    return sys.stdin.readline().rstrip()
 
 n, h, d = map(int, input().split())
 

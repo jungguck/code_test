@@ -1,11 +1,6 @@
 # Authored by : tony9402
 # Co-authored by : -
 # Link : http://boj.kr/a35de756ecf642b6b2e116f14ffd6093
-
-import sys
-def input():
-    return sys.stdin.readline().rstrip()
-
 s = input()
 stack = []
 

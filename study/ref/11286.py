@@ -1,11 +1,7 @@
 # Authored by : gusdn3477
 # Co-authored by : -
 # Link : http://boj.kr/29a558ec778348f589fad5c627187638
-import sys
 import heapq
-
-def input():
-    return sys.stdin.readline().rstrip()
 
 N = int(input())
 heap = []

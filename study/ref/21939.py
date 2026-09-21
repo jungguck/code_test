@@ -1,11 +1,8 @@
 # Authored by: tony9402
 # Co-authored by: -
 # Link: http://boj.kr/87e29ae241204a7d923fff68d173bcc9
-import sys
-import heapq
 
-def input():
-    return sys.stdin.readline().rstrip()
+import heapq
 
 mx_heap, mn_heap = [], []
 level = [0] * 100001

@@ -1,12 +1,7 @@
 # Authored by : yj2221
 # Co-authored by : -
 # Link : http://boj.kr/81188121d759417d8f72e6a00476ce7c
-
 from collections import deque
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
 
 def rotate(arr, N):
     result  = []

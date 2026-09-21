@@ -1,11 +1,7 @@
 # Authored by : gusdn3477
 # Co-authored by : tony9402
 # Link : http://boj.kr/816fdae98bec4a4f95a3fb44fd2f348f
-import sys
 from math import sqrt
-
-def input():
-    return sys.stdin.readline().rstrip()
 
 def solve(N):
     ret = 4

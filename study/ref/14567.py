@@ -1,12 +1,7 @@
 # Authored by : yj2221
 # Co-authored by : tony9402
 # Link : http://boj.kr/563199054385492b8f7e25eca46a2696
-
 from collections import deque
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
 
 n, m = map(int, input().split())
 

@@ -1,11 +1,7 @@
 # Authored by : chj3748
 # Co-authored by : -
 # Link : http://boj.kr/23af4ad30fe24df4a71cdd3db925087c
-import sys
 import heapq
-
-def input():
-    return sys.stdin.readline().rstrip()
 
 N = int(input())
 numbers = list(map(int, input().split()))

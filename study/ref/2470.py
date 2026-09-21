@@ -2,9 +2,6 @@
 # Co-authored by : -
 # Link : http://boj.kr/c487c1f5e7f34df0aaeba6a14fb6b2a5
 from bisect import bisect_left
-import sys
-def input():
-    return sys.stdin.readline().rstrip()
 
 n = int(input())
 lst_pos, lst_neg = [], []

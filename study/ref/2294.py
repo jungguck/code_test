@@ -1,11 +1,6 @@
 # Authored by : cieske
 # Co-authored by : -
 # Link : http://boj.kr/4c2449f200e440f39d4ba8e1e71601b6
-
-import sys
-def input():
-    return sys.stdin.readline().rstrip()
-
 n, k = map(int, input().split())
 coin = set([int(input()) for _ in range(n)]) #중복 동전 제거
 dp = [0]*(k+1)

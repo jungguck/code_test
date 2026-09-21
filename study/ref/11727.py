@@ -1,11 +1,6 @@
 # Authored by : gusdn3477
 # Co-authored by : -
 # Link : http://boj.kr/db4e4b38ee3c4264b672837fa8fff893
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
-
 MOD = 10007
 N = int(input())
 dp = [0] * (N+2)

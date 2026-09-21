@@ -1,11 +1,7 @@
 # Authored by : yj2221
 # Co-authored by : -
 # Link : http://boj.kr/d903976eaa454c208a0a75092a20d1c6
-
 from collections import deque
-import sys
-def input():
-    return sys.stdin.readline().rstrip()
 
 board = [list(input()) for _ in range(8)]
 

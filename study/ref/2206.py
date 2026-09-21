@@ -2,10 +2,6 @@
 # Co-authored by : tony9402
 # Link : http://boj.kr/2cb5e18deb964794bec3e960225ad83e
 from collections import deque
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
 
 def answer(row, col):
     global m, n
@@ -33,7 +29,6 @@ def answer(row, col):
             elif is_able == 1 and G[drow][dcol] == '1':
                 visited[drow][dcol][0] = visited[r][c][1] + 1
                 q.append((drow, dcol, 0))
-
 
     shortest = visited[n - 1][m - 1]
     return_val = None

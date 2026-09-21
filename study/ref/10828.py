@@ -1,11 +1,6 @@
 # Authored by : tony9402
 # Co-authored by : -
 # Link : http://boj.kr/ab416f0794fc41cabc3d9ed46db29f60
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
-
 N = int(input())
 
 stack = [] 

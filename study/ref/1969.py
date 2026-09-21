@@ -1,12 +1,6 @@
 # Authored by : gusdn3477
 # Co-authored by : -
 # Link : http://boj.kr/c08f03602f524dc3822344da70739929
-
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
-
 N, M = map(int, input().split())
 arr = []
 word = ''

@@ -1,10 +1,6 @@
 # Authored by : wassup37
 # Co-authored by : tony9402
 # Link : http://boj.kr/1211037748274f97ae2a8a24c4f0ec9e
-import sys
-
-def input():
-    return sys.stdin.readline().rstrip()
 N = int(input())
 wine = [0] + [int(input()) for i in range(N)] # 인덱스가 1부터 시작하도록 만듭니다.
 

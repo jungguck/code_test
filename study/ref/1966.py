@@ -1,11 +1,7 @@
 # Authored by : gusdn3477
 # Co-authored by : -
 # Link : http://boj.kr/74b1e7adb56b425aa6644b3d2ea726e0
-import sys
 from collections import deque
-
-def input():
-    return sys.stdin.readline().rstrip()
 
 T = int(input())
 for i in range(T):
