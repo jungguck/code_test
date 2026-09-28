@@ -42,8 +42,13 @@ import verify_cards as vc                                  # noqa: E402
 NEED_SEC = ["문제", "입력", "출력", "예제", "풀이 아이디어", "코드 따라가기", "외울 것"]
 
 
-def llm(prompt, max_tokens=4000, temp=0.3, timeout=600):
-    """Qwen 한 번 호출. thinking 은 끈다 — 켜두면 content 가 비고 토큰만 태운다."""
+def llm(prompt, max_tokens=4000, temp=0.3, timeout=180):
+    """★ [2026-09-28] timeout 을 600 -> 180 초로 줄였다.
+    실측으로 한 장이 12~55초다. 600 초는 한 번 매달리면 4시도 × 10분 = 40분을 날린다.
+    실제로 그렇게 멈췄다 — GPU 0%, 서버는 즉시 응답하는데 진행이 13분간 없었다.
+   
+    Qwen 한 번 호출. thinking 은 끈다 — 켜두면 content 가 비고 토큰만 태운다.
+    """
     body = json.dumps({
         "messages": [{"role": "user", "content": prompt}],
         "max_tokens": max_tokens,
@@ -183,14 +188,18 @@ def make(cat, no, title, tier, tries=3, dry=False):
         try:
             topic, body = clean_body(llm(p))
         except Exception as e:
-            return False, [f"Qwen 호출 실패: {type(e).__name__}: {e}"]
+            # 호출 실패(타임아웃·연결끊김)는 **재시도 가능한 실패**로 본다.
+            #   전에는 여기서 그 카드를 통째로 포기했다 — 서버가 한 번 삐끗하면 끝이었다.
+            reasons = [f"Qwen 호출 실패: {type(e).__name__}: {e}"]
+            print(f"      시도 {attempt}: {time.time()-t0:5.1f}s {reasons[0][:70]}", flush=True)
+            continue
         if not topic:
             topic = f"{tier} · {cat}"            # Qwen 이 안 썼을 때만 기본값
         missing = [s for s in NEED_SEC if ("## " + s) not in body]
         write_card(cat, no, title, tier, body, topic)
         reasons = ([f"항목 누락: {', '.join(missing)}"] if missing else []) + judge(no)
         print(f"      시도 {attempt}: {time.time()-t0:5.1f}s "
-              f"{'통과' if not reasons else '거부 ' + str(len(reasons)) + '건'}")
+              f"{'통과' if not reasons else '거부 ' + str(len(reasons)) + '건'}", flush=True)
         for r in reasons[:4]:
             print(f"         - {r[:88]}")
         if not reasons:
