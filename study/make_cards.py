@@ -120,12 +120,20 @@ def clean_body(text):
     if t.startswith("```"):                       # 전체를 코드펜스로 감싼 경우
         t = re.sub(r"^```[a-z]*\n", "", t)
         t = re.sub(r"\n```$", "", t)
-    t = re.sub(r"^---\n.*?\n---\n", "", t, flags=re.S).strip()   # 머리말을 썼으면 버린다
     topic = ""
-    m = re.match(r"topic:\s*(.+)", t)
-    if m:
-        topic = m.group(1).strip().strip("`")
-        t = t[m.end():].lstrip("\n")
+    # Qwen 은 "머리말 쓰지 마라" 를 무시하고 ---...--- 를 통째로 쓴다(실측).
+    #   싸우지 말고 거기서 topic 만 꺼내 쓴다. 나머지 키는 우리 값이 정본이라 버린다.
+    fm = re.match(r"^---\n(.*?)\n---\n", t, flags=re.S)
+    if fm:
+        mt = re.search(r"^topic:\s*(.+)$", fm.group(1), re.M)
+        if mt:
+            topic = mt.group(1).strip().strip("`")
+        t = t[fm.end():].strip()
+    if not topic:                                  # 머리말 없이 topic 한 줄만 쓴 경우
+        m = re.match(r"topic:\s*(.+)", t)
+        if m:
+            topic = m.group(1).strip().strip("`")
+            t = t[m.end():].lstrip("\n")
     i = t.find("## 문제")
     return topic, (t[i:].strip() if i >= 0 else t.strip())
 
