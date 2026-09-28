@@ -1,4 +1,6 @@
-isbn = input()
+import sys
+input = sys.stdin.readline
+isbn = input().rstrip()
 star_idx = 0
 total_sum = 0
 

@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 max_value = 0
 max_index = 0
 

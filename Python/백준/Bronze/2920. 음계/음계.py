@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 a = list(map(int, input().split()))
 
 if a[1] > a[0]:

@@ -1,4 +1,6 @@
 import sys
+input = sys.stdin.readline
+import sys
 
 # 테스트 케이스 개수 입력
 n = int(input())
