@@ -1,1 +1,1 @@
-print('nkukugwan')
+print('kukugwan')
