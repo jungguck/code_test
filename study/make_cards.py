@@ -41,6 +41,12 @@ import verify_cards as vc                                  # noqa: E402
 
 NEED_SEC = ["문제", "입력", "출력", "예제", "풀이 아이디어", "코드 따라가기", "외울 것"]
 
+# 카드를 만들지 않는 문제와 그 이유. 4번씩 시도하다 포기하는 낭비를 막는다.
+SKIP = {
+    "33701": "입력이 0바이트(없음)이고 답이 상수 'kukugwan' 이다 — '## 입력' 에 쓸 게 "
+             "없어 build.py 의 항목 10자 규칙과 충돌한다. 배울 것이 없는 문제다.",
+}
+
 
 def llm(prompt, max_tokens=4000, temp=0.3, timeout=180):
     """★ [2026-09-28] timeout 을 600 -> 180 초로 줄였다.
@@ -167,6 +173,8 @@ def judge(no):
 
 
 def make(cat, no, title, tier, tries=3, dry=False):
+    if no in SKIP:
+        return False, ["건너뜀: " + SKIP[no]]
     ref = os.path.join(REF, no + ".py")
     if not os.path.exists(ref):
         return False, [f"ref/{no}.py 가 없다"]

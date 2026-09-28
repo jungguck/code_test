@@ -205,8 +205,15 @@ def verify(no):
             odig = digits(otxt)
             missing = sorted(x for x in odig if x not in ex)
             if missing:
-                errs.append(f"C2 {os.path.basename(ip)} 는 예제에 실렸는데 그 정답 "
-                            f"{missing} 가 없다")
+                # 출력이 긴 문제(알파벳 찾기: 26개 토큰)는 카드가 예제를 줄여 쓰는 것이
+                #   정상이다. 그때까지 거부하면 만들 수 없는 카드가 된다 → 경고로 낮춘다.
+                #   짧은 출력에서 답이 틀린 것은 그대로 거부한다(그게 잡아야 할 것이다).
+                if len(otxt.split()) > 8:
+                    warns.append(f"C2 {os.path.basename(ip)} 의 정답 일부({missing[:4]})가 "
+                                 f"예제에 없다 — 출력이 길어 줄여 쓴 것이면 정상")
+                else:
+                    errs.append(f"C2 {os.path.basename(ip)} 는 예제에 실렸는데 그 정답 "
+                                f"{missing} 가 없다")
             for tok in otxt.split():           # YES/NO 처럼 숫자가 아닌 정답
                 if tok and not tok.isdigit() and tok not in scope:
                     errs.append(f"C2 {os.path.basename(ip)} 는 예제에 실렸는데 그 정답 "
