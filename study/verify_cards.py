@@ -234,6 +234,18 @@ def verify(no):
                              f"(기대 {want[:2]} / 실제 {got[:2]}) — 부동소수나 저장본 오류일 수 있다")
                 break
 
+    # ── C7 생각 흘림 / 추측 표현 ────────────────────────────────
+    #   Qwen 이 답을 못 찾으면 **고민을 본문에 남긴다.** 실측(2775 부녀회장):
+    #     "아니, 규칙을 다시 보면 …", "Wait, 예제 출력이 …", "예제 형식이 혼재되어 있거나"
+    #   숫자는 다 들어있어서 C2 를 통과했다 — 그래서 별도 규칙이 필요하다.
+    #   근거: .claude/commands/explain.md "겸손 표현 말고 **단정적으로**".
+    for mark in ("Wait", "Hmm", "Let me", "Actually,", "아니,", "것 같다", "듯하다",
+                 "아마도", "제 생각", "다시 보면", "혼재"):
+        if mark in body:
+            errs.append(f"C7 생각을 흘렸거나 추측 표현을 썼다: {mark!r} "
+                        f"— 카드는 단정적으로 쓴다")
+            break
+
     # ── C4 코드 인용 (경고) ─ 설명용 미니 예시는 없는 게 정상이다
     if os.path.exists(ref) and sec and sec.get("코드 따라가기"):
         refsrc = norm_code(io.open(ref, encoding="utf-8", errors="replace").read())
@@ -275,6 +287,9 @@ _SELFTEST = [
     ("32941", "C5 C++ 코드 삽입",
      lambda t: t.replace("## 외울 것", "## 외울 것\n```cpp\n#include <iostream>\n```\n", 1)),
     ("32941", "C6 머리말 no 불일치", lambda t: t.replace("no: 32941", "no: 32942", 1)),
+    ("32941", "C7 생각 흘림",
+     lambda t: t.replace("## 풀이 아이디어\n",
+                         "## 풀이 아이디어\nWait, 규칙을 다시 보면 아닌 것 같다.\n", 1)),
 ]
 
 
