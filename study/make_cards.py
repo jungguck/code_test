@@ -96,8 +96,14 @@ def build_prompt(cat, no, title, tier, code, readme, retry_reasons=()):
     # 지문을 같이 준다 — 코드만 주면 입력 형식·제약을 코드에서 짐작하다 지어낸다.
     p += ("\n\n## 문제 지문 원문 (여기 있는 내용만 쓴다)\n"
           "<지문>\n" + vc.strip_markup(readme)[:6000] + "\n</지문>\n")
-    p += ("\n## 머리말은 쓰지 마라\n"
-          "`---` 머리말은 내가 붙인다. 너는 **`## 문제` 부터** 시작해서 일곱 개 항목만 써라.\n")
+    p += ("\n## 출력 형식 — 이것만 지켜라\n"
+          "`---` 머리말은 내가 붙인다(번호·제목·난이도·분류는 이미 안다). 너는 이렇게 쓴다:\n"
+          "1) **첫 줄**에 `topic: ` 한 줄. 세부 유형을 짧게. 예: `완전탐색 · 3중 반복문`,\n"
+          "   `DP · 1차원 점화식`, `문자열 · 해시`. 난이도나 분류 이름을 그대로 쓰지 마라.\n"
+          "2) 빈 줄 하나\n"
+          "3) `## 문제` 부터 일곱 개 항목\n"
+          "\n`## 입력` 에는 지문에 적힌 **크기 제약(N, M 의 범위)을 그대로** 옮겨라. "
+          "지문에 없으면 쓰지 마라 — 숫자를 짐작하지 마라.\n")
     if retry_reasons:
         p += ("\n## ⚠ 직전 시도가 거부됐다. 아래를 고쳐서 다시 써라\n"
               + "\n".join("- " + r for r in retry_reasons) + "\n")
@@ -105,14 +111,23 @@ def build_prompt(cat, no, title, tier, code, readme, retry_reasons=()):
 
 
 def clean_body(text):
-    """Qwen 출력에서 본문만 꺼낸다."""
+    """Qwen 출력 다듬기 -> (topic, 본문).
+
+    ⚠ topic 을 먼저 떼고 나서 `## 문제` 앞을 자른다. 순서를 바꾸면 topic 줄이 먼저
+      잘려나가서 항상 기본값이 들어간다(첫판에 그랬다).
+    """
     t = text.strip()
     if t.startswith("```"):                       # 전체를 코드펜스로 감싼 경우
         t = re.sub(r"^```[a-z]*\n", "", t)
         t = re.sub(r"\n```$", "", t)
-    t = re.sub(r"^---\n.*?\n---\n", "", t, flags=re.S)   # 머리말을 썼으면 버린다
+    t = re.sub(r"^---\n.*?\n---\n", "", t, flags=re.S).strip()   # 머리말을 썼으면 버린다
+    topic = ""
+    m = re.match(r"topic:\s*(.+)", t)
+    if m:
+        topic = m.group(1).strip().strip("`")
+        t = t[m.end():].lstrip("\n")
     i = t.find("## 문제")
-    return t[i:].strip() if i >= 0 else t
+    return topic, (t[i:].strip() if i >= 0 else t.strip())
 
 
 def write_card(cat, no, title, tier, body, topic):
@@ -158,14 +173,12 @@ def make(cat, no, title, tier, tries=3, dry=False):
             return True, []
         t0 = time.time()
         try:
-            body = clean_body(llm(p))
+            topic, body = clean_body(llm(p))
         except Exception as e:
             return False, [f"Qwen 호출 실패: {type(e).__name__}: {e}"]
+        if not topic:
+            topic = f"{tier} · {cat}"            # Qwen 이 안 썼을 때만 기본값
         missing = [s for s in NEED_SEC if ("## " + s) not in body]
-        topic = f"{tier} · {cat}"
-        m = re.search(r"^topic:\s*(.+)$", body, re.M)
-        if m:
-            topic = m.group(1).strip()
         write_card(cat, no, title, tier, body, topic)
         reasons = ([f"항목 누락: {', '.join(missing)}"] if missing else []) + judge(no)
         print(f"      시도 {attempt}: {time.time()-t0:5.1f}s "
